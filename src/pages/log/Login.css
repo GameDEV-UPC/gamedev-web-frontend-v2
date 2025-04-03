@@ -1,0 +1,102 @@
+
+/* Estilo para la página de login */
+.login-page {
+    height: 97vh;  /* 100% de la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;  /* Ocupa el 90% de la pantalla */
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    padding: 20px;  /* Espacio interno para que no se pegue al borde */
+    gap: 90px;
+    overflow: hidden;  /* Evita que haya scroll en el cuerpo */
+
+}
+
+/* Estilo para el título */
+.login-title {
+    font-size: 2.5rem;
+    margin: 40px 0;
+    text-align: center;
+
+}
+
+/* Estilo de los contenedores de input */
+.login-container {
+    gap: 30px;
+    display: grid;
+    width: 80%;
+    max-width: 500px;
+}
+
+/* Estilo del mensaje de error */
+.error-message {
+    color: var(--color-error);
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: fit-content(100%);
+}
+
+/* Estilos para el botón de login */
+.login-button {
+    background-color: var(--color-primary);
+    color: black;
+    width: 100%;
+    border: 2px solid var(--color-border);
+    border-radius: 2px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.login-button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.login-button.loading {
+    color: transparent;
+}
+
+.login-button.ready {
+    background-color: var(--color-secondary);
+    color: #000;
+}
+
+.login-button.error {
+    background-color: var(--color-error);
+    color: var(--color-text);
+    cursor: auto;
+}
+
+.login-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Cuadrado de carga que cubre el botón */
+.loading-square {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: loading 1.5s infinite ease-in-out;
+}
+
+@keyframes loading {
+    0% { transform: scaleX(0); }
+    50% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+}

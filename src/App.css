@@ -1,0 +1,8 @@
+body {
+    background-color: #000000;
+    border: white 4px solid;
+}
+/* Asegura que el box-sizing incluya los bordes y padding en el tamaño total */
+*, *::before, *::after {
+    box-sizing: border-box;
+}

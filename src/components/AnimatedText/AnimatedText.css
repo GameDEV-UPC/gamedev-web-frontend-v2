@@ -1,0 +1,30 @@
+.animated-text {
+    font-family: "Press Start 2P";
+    font-size: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    position: relative;
+    padding: 10px; /* Añade espacio para el shadow */
+
+}
+
+/* Clases de glitch */
+.glitch-char {
+
+    display: inline-block;
+    animation: glitch-effect 0.2s ease-in-out infinite alternate;
+}
+
+/* Animación para las letras glitcheadas */
+@keyframes glitch-effect {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(2px);
+    }
+}

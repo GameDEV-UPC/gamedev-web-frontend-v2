@@ -1,0 +1,51 @@
+:root {
+  --color-text: #ffffff;
+  --color-primary: #ffffff;
+  --color-secondary: rgb(0, 0, 0);
+  --color-terciary: rgb(57, 253, 180); ;
+  --color-border: #ffffff;
+  --color-background: linear-gradient(135deg, #0A0F0D, #1B1F21 70%);
+  --focused-color: var(--color-secondary);
+  --text-glow-color: #ffffff;
+  --svg-text-shadow: 0 0 10px var(--svg-text-glow);
+  --svg-text-glow: var(--text-glow-color);
+  --svg-font-size: 120px;
+  --main-font: 'Orbitron-Regular', sans-serif;
+  --text-font: "Press Start 2P", sans-serif;
+  --color-error: #ff0033;
+  --color-placeholder: rgba(255, 255, 255, 0.34);
+}
+
+@font-face  {
+  font-family: Orbitron-Regular;
+  src: url('../../gamedev-web-frontend_/src/assets/fonts/Orbitron/static/Orbitron-Regular.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Orbitron-Medium;
+  src: url('../../gamedev-web-frontend_/src/assets/fonts/Orbitron/static/Orbitron-Medium.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Dosis-Regular;
+  src: url('../../gamedev-web-frontend_/src/assets/fonts/Dosis/static/Dosis-Regular.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Dosis-Light;
+  src: url('../../gamedev-web-frontend_/src/assets/fonts/Dosis/static/Dosis-Light.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face{
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+

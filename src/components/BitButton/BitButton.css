@@ -1,0 +1,31 @@
+.bit-button {
+    width:500px;
+    background: #000;
+    border: 3px solid #fff;
+    color: #fff;
+    padding: 10px 10%;
+    height: 60px;
+    cursor: pointer;
+
+    transition: all 0.2s;
+
+
+    position: relative;
+    box-shadow: 3px 3px 0 #fff;
+    align-items: center;
+
+}
+
+
+.bit-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 #0f0;
+    color: #0f0;
+    border: 3px solid #0f0;
+
+}
+
+.bit-button:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0 0 0 #fff;
+}

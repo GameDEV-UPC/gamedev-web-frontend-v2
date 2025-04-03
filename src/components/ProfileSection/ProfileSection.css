@@ -1,0 +1,29 @@
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 4px;
+    border: 3px solid #fff;
+    box-shadow: 4px 4px 0 #fff;
+    object-fit: cover;
+    margin-right: 30px;
+}
+
+.profile-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.profile-user  {
+    font-size: 18px;
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0;
+}
+
+.profile-text p {
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
