@@ -12,11 +12,11 @@ const fakeUser = new User(
     "Jane",
     "Doe",
     "janedoe@example.com",
-    "https://via.placeholder.com/150",
+    "https://placehold.co/150x150",
     [
-        { gameName: "Chess", maxScore: 1400, timePlayed: 200 },
-        { gameName: "Sudoku", maxScore: 1100, timePlayed: 80 },
-        { gameName: "Tetris", maxScore: 1300, timePlayed: 100 },
+        { gameName: "Chess", gameImage: "https://placehold.co/50x50", maxScore: 1400, timePlayed: 200 },
+        { gameName: "Sudoku", gameImage: "https://placehold.co/50x50",maxScore: 1100, timePlayed: 80 },
+        { gameName: "Tetris", gameImage: "https://placehold.co/50x50",maxScore: 1300, timePlayed: 100 },
     ]
 );
 

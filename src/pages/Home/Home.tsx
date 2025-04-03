@@ -21,7 +21,7 @@ function Home() {
                     </EffectText>
                 </div>
 
-                <img src={logo} alt="logo" />
+                {/* <img src={logo} alt="logo" />*/}
 
                 <div className="button-container">
                     <BitButton onClick={() => handleNavigate("/login")} aria-label="Go to Login Page">

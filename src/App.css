@@ -1,6 +1,7 @@
 body {
     background-color: #000000;
     border: white 4px solid;
+    overflow-y: hidden;
 }
 /* Asegura que el box-sizing incluya los bordes y padding en el tamaño total */
 *, *::before, *::after {

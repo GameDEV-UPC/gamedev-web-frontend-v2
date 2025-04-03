@@ -17,7 +17,7 @@ function Main() {
 
     // const { users, isLoading, error, refetch } = useFetchUsers("http://0.0.0.0:8000/users");
     return (
-        <div className="main-container">
+        <div className="container">
 
 
             <Leaderboard users={users} />

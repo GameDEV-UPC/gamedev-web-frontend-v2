@@ -15,24 +15,48 @@ function StatisticsSection({
         <div className="section">
             <div className="stat-header">
                 <EffectText
+                    fontSize="1rem"
+                    pixelMode
+                    borderOffset={5.0}
+
 
                 >
                     Statistics
                 </EffectText>
             </div>
             <div className="stat-item">
-                <span>Total Play Time:</span>
-                <span>{totalPlayTime} mins</span>
+                <EffectText
+                    fontSize="0.8rem"
+
+                >
+                    Total Play Time:</EffectText>
+                <EffectText
+                    fontSize="0.8rem"
+
+                >
+                    {totalPlayTime} mins
+                </EffectText>
             </div>
             <div className="stat-item">
-                <span>Total Score:</span>
-                <span>{totalScore}</span>
+                <EffectText
+                    fontSize="0.8rem"
+                >
+                    Total Score:
+                </EffectText>
+                <EffectText
+                    fontSize="0.8rem"
+
+                >{totalScore}</EffectText>
             </div>
             <div className="stat-item">
-                <span>Highest Scoring Game:</span>
-                <span>
+                <EffectText
+                    fontSize="0.8rem"
+                >Highest Scoring Game:</EffectText>
+                <EffectText
+                    fontSize="0.8rem"
+                >
                     {highestScoringGame.gameName} ({highestScoringGame.maxScore} points)
-                </span>
+                </EffectText>
             </div>
         </div>
     );

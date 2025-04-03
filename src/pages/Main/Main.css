@@ -1,3 +1,70 @@
-.main-container {
-    padding-top: 10vh;
+.container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    ç
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Asegura el centrado vertical si es necesario */
+    width: 100%;
+}
+/* Firefox */
+.container {
+    scrollbar-width: thin;
+    scrollbar-color: #fff #000;
+}
+
+/* Webkit (Chrome, Edge, Safari) */
+.container::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra */
+}
+
+.container::-webkit-scrollbar-track {
+    background: #000; /* Fondo negro */
+    border-radius: 0px; /* Cuadrada */
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: #fff; /* Color blanco */
+    border-radius: 0px; /* Sin bordes redondeados */
+    border: 2px solid #000; /* Borde negro para contraste */
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Efecto al pasar el cursor */
+.container::-webkit-scrollbar-thumb:hover {
+    background: #ccc; /* Gris cuando pasas el mouse */
+    transform: scale(1.1); /* Hace la barra un poco más grande */
+}
+
+/* Efecto al hacer clic en la barra */
+.container::-webkit-scrollbar-thumb:active {
+    background: #888;
+    transform: scale(1.2);
+}
+
+.section {
+
+    width: 100%; /* Ajusta el ancho si es necesario */
+    max-width: 1000px; /* Evita que sean demasiado anchas */
+    padding: 30px;
+    margin: 30px auto; /* Centra horizontalmente */
+    background: #000;
+    border: 3px solid #fff;
+    box-shadow: 6px 6px 0 #fff;
+    text-align: center; /* Centra el texto */
+    transition: all 0.2s, box-shadow 0.3s ease-in-out;
+    font-family: "Press Start 2P";
+    color: #fff;
+}
+
+.section:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0 #fff;
+}
+
+.section:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0 0 0 #fff;
 }

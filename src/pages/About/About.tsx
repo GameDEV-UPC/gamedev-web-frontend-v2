@@ -12,7 +12,7 @@ function About() {
     };
 
     return (
-        <div className="about-container">
+        <div className="container">
             {/* Descripción global */}
             <EffectText
 
