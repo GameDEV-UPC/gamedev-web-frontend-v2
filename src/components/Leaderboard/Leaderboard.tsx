@@ -12,7 +12,7 @@ function Leaderboard({ users }: LeaderboardProps) {
     const sortedUsers = [...users].sort((a, b) => b.score - a.score);
 
     return (
-        <div className="leaderboard-container">
+        <div className="section">
             <div className="leaderboard-header">
                 <EffectText
                     fontSize="2.2rem"
