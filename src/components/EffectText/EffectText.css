@@ -11,6 +11,9 @@
 
 .txt span {
     position: relative;
+    letter-spacing: 0;
+    display: inline-block;
+    text-spacing-trim: 10em;
 }
 
 .txt span b {

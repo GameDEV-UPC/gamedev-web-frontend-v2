@@ -1,6 +1,6 @@
-import {User} from "@interfaces/User.tsx"
+import {User} from "../../interfaces/User.tsx"
 import "./ProfileSection.css";
-import EffectText from "@components/EffectText/EffectText.tsx";
+import EffectText from "../../components/EffectText/EffectText.tsx";
 
 function ProfileSection({ user }: { user: User }) {
     return (

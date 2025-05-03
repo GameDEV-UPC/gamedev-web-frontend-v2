@@ -1,141 +1,169 @@
-.about-container {
-    background: #000;
+
+
+
+  .description {
     color: #fff;
-    font-family: "Press Start 2P";
-    padding: 20px;
-    border: 3px solid #fff;
-    position: relative;
-    box-shadow: 6px 6px 0 #fff;
-    margin: 20px auto;
-    transition: all 0.2s;
-    letter-spacing: 2px;
-    width: 90%;
-    padding-top: 20vh;
-}
-
-.about-container:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 4px 4px 0 #fff;
-}
-
-.about-container:active {
-    transform: translate(6px, 6px);
-    box-shadow: 0 0 0 #fff;
-}
-
-.description, .members-section {
+    font-family: "Press Start 2P", cursive;
+  
+  }
+  section{
+    width: 80%;
+  }
+  .description, .members-section {
     margin-top: 20px;
     padding: 10px;
-}
-
-.description p, .members-section p {
-    font-size: 16px;
-    text-align: center;
-}
-
-.members-grid {
+    justify-content: center;
+  }
+  
+  .description, .members-section p {
+    font-size: 14px;
+    text-align: justify;
+    line-height: 1.6;
+    color: #fff;
+  }
+  
+  .members-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     margin-top: 20px;
-}
-
-.member-card {
-    background: #333;
+  }
+  
+  .member-card {
+    background: #111;
     border: 3px solid #fff;
     padding: 10px;
     text-align: center;
     box-shadow: 4px 4px 0 #fff;
     transition: all 0.2s;
-}
-
-.member-card:hover {
+    height: 200px;
+  }
+  
+  .member-card:hover {
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0 #fff;
-}
-
-.member-card:active {
-    transform: translate(6px, 6px);
+  }
+  
+  .member-card:active {
+    transform: translate(4px, 4px);
     box-shadow: 0 0 0 #fff;
-}
-
-.switch-container {
+  }
+  
+  .member-image {
+    width: 100%;
+    height: auto;
+    border: 2px solid #fff;
+    box-shadow: 2px 2px 0 #fff;
+    margin-bottom: 12px;
+  }
+  
+  .member-name {
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  /* Botón toggle */
+  .switch-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-}
-
-.switch-button {
+    margin: 20px 0;
+  }
+  
+  .switch-button {
     background: #000;
     border: 3px solid #fff;
     color: #fff;
     padding: 12px 24px;
     font-family: "Press Start 2P", sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     cursor: pointer;
     text-transform: uppercase;
-    transition: all 0.2s;
-    margin: 12px 0;
+    transition: all 0.3s ease;
     letter-spacing: 2px;
-    box-shadow: 6px 6px 0 #fff;
-}
-
-.switch-button:hover {
-    transform: translate(2px, 2px);
     box-shadow: 4px 4px 0 #fff;
-}
-
-.switch-button:active {
-    transform: translate(6px, 6px);
-    box-shadow: 0 0 0 #fff;
-}
-
-/* Switch button */
-.switch-button {
-    padding: 15px 50px;
-    border: 2px solid var(--color-primary);
-    font-size: 1rem;
-    font-family: var(--text-font);
-    color: var(--color-text);
-    background: var(--color-secondary);
-    cursor: pointer;
-    overflow: hidden;
-    transition: background-color var(--transition-duration), box-shadow var(--transition-duration);
     position: relative;
-    width: 20ch;
-    user-select: none; /* Evita la selección azul */
-    outline: none; /* Elimina el borde azul en móviles */
-}
-
-.switch-button:active {
-    transform: scale(0.95); /* Da una sensación táctil */
-}
-
-.switch-button:hover {
-    background-color: var(--color-secondary);
-    color: white;
-}
-
-.switch-button::before {
+    overflow: hidden;
+    min-width: 220px;
+  }
+  
+  .switch-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #fff;
+  }
+  
+  .switch-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 #fff;
+  }
+  
+  .switch-button::before {
     content: attr(data-alt-text);
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: var(--color-primary);
-    color: black;
+    background: #fff;
+    color: #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: left 1s ease;
+    transition: left 0.5s ease;
     z-index: 1;
-}
-
-.switch-button:active::before {
-    left: -100%; /* Reproduce la animación hacia atrás */
-}
-
-.switch-button:hover::before {
+  }
+  
+  .switch-button:hover::before {
     left: 0;
-}
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .members-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .members-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .switch-button {
+      font-size: 10px;
+      padding: 10px 20px;
+      min-width: 180px;
+    }
+  
+    .description, .members-section p {
+      font-size: 12px;
+    }
+  
+    .member-name {
+      font-size: 10px;
+    }
+    section{
+        width: 100%;
+    }
+  
+  }
+  
+  @media (max-width: 480px) {
+    .switch-button {
+      font-size: 9px;
+      padding: 8px 16px;
+      min-width: 160px;
+    }
+  
+    .members-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .description, .members-section p {
+      font-size: 10px;
+      width: 100%;
+    }   
+    section{
+        width: 100%;
+    }
+  }
+  

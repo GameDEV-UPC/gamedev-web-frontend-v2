@@ -7,3 +7,32 @@ body {
 *, *::before, *::after {
     box-sizing: border-box;
 }
+h1{
+    color: #fff;
+    font-family: "Press Start 2P", cursive;
+}
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+   
+
+  }
+  
+  @media (max-width: 768px) {
+   
+  
+  }
+  
+  @media (max-width: 480px) {
+   
+    .app-container {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        height: 80vh;
+    }
+  }
+  .app-container {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    height: 80vh;
+}

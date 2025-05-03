@@ -1,6 +1,6 @@
 
 import "./StatisticsSection.css"
-import EffectText from "@components/EffectText/EffectText.tsx";
+import EffectText from "../../components/EffectText/EffectText.tsx";
 
 function StatisticsSection({
                                totalPlayTime,

@@ -1,7 +1,8 @@
 import "./GameSection.css"
-import EffectText from "@components/EffectText/EffectText.tsx";
+import EffectText from "../../components/EffectText/EffectText";
+import { VideoGame } from "../../interfaces/Videogame";
 
-function GamesSection({ games }: { games: { gameName: string, gameImage: string,maxScore: number, timePlayed: number }[] }) {
+function GamesSection({ games }: { games: VideoGame[] }) {
 
     return (
         <div className="section">
@@ -14,7 +15,7 @@ function GamesSection({ games }: { games: { gameName: string, gameImage: string,
                 Games Played
             </EffectText>
             <div className="games-grid">
-                {games.map((game, index) => {
+                {games.map((game: VideoGame, index: number) => {
 
                     return (
 
@@ -30,11 +31,7 @@ function GamesSection({ games }: { games: { gameName: string, gameImage: string,
                             </EffectText>
                         </div>
                         <div className="game-card-content">
-                            <img
-                                src={game.gameImage}
-                                alt={`Game ${game.gameName}`}
-                                className="game-image">
-                            </img>
+                           
                             <EffectText
                                 fontSize="0.5rem"
 

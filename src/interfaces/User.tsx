@@ -1,10 +1,13 @@
+import { VideoGame } from "./Videogame";  // Importa la clase VideoGame
+
 export class User {
     username: string;
     firstName: string;
     lastName: string;
     email: string;
     profilePicture: string;
-    gamesPlayed: { gameName: string; maxScore: number; timePlayed: number }[];
+    gamesPlayed: VideoGame[];  // Usamos la clase VideoGame aquí
+    total_score: number;
 
     constructor(
         username: string,
@@ -12,7 +15,7 @@ export class User {
         lastName: string,
         email: string,
         profilePicture: string,
-        gamesPlayed: { gameName: string; maxScore: number; timePlayed: number }[]
+        gamesPlayed: VideoGame[]  // Ahora se espera un array de VideoGame
     ) {
         this.username = username;
         this.firstName = firstName;
@@ -20,6 +23,7 @@ export class User {
         this.email = email;
         this.profilePicture = profilePicture;
         this.gamesPlayed = gamesPlayed;
+        this.total_score = this.calculateTotalScore(); // Calcula el total_score
     }
 
     // Calculate total play time across all games
@@ -28,15 +32,15 @@ export class User {
     }
 
     // Get the game with the highest score
-    highestScoringGame(): { gameName: string; maxScore: number } {
+    highestScoringGame(): VideoGame {
         return this.gamesPlayed.reduce(
             (max, game) => (game.maxScore > max.maxScore ? game : max),
-            { gameName: "N/A", maxScore: 0 }
+            new VideoGame("N/A", 0, 0)  // Usamos la clase VideoGame para el valor por defecto
         );
     }
 
     // Calculate total score across all games
-    totalScore(): number {
+    calculateTotalScore(): number {
         return this.gamesPlayed.reduce((total, game) => total + game.maxScore, 0);
     }
 }

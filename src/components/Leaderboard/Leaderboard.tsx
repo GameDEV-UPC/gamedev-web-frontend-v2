@@ -1,75 +1,80 @@
 import "./Leaderboard.css";
-import User from "@interfaces/User";
+import { User } from "../../interfaces/User";
 
-import EffectText from "@components/EffectText/EffectText.tsx";
+import EffectText from "../../components/EffectText/EffectText.tsx";
 
 interface LeaderboardProps {
-    users: User[];
+  users: User[];
 }
 
 function Leaderboard({ users }: LeaderboardProps) {
-    // Ordenar usuarios por puntuación de forma descendente
-    const sortedUsers = [...users].sort((a, b) => b.score - a.score);
+  // Ordenar usuarios por puntuación de forma descendente
+  const sortedUsers = [...users].sort(
+    (a, b) => (Number(b.total_score) || 0) - (Number(a.total_score) || 0)
+  );
 
-    return (
-        <div className="section">
-            <div className="leaderboard-header">
-                <EffectText
-                    fontSize="2.2rem"
-                    pixelMode
-                    borderOffset={3.0}
-
-                >
-                    Leaderboard
-                </EffectText>
-            </div>
-            <div className="leaderboard">
-                {sortedUsers.map((user, index) => (
-                    <LeaderboardItem
-                        key={user.username}
-                        rank={index + 1}
-                        username={user.username}
-                        profilePic={user.profile_pic}
-                        score={user.score}
-                        playTime={user.play_time || 0} // Valor por defecto si `play_time` no existe
-                    />
-                ))}
-            </div>
-        </div>
-    );
+  return (
+    <div className="leaderboard-container">
+      <div className="leaderboard-header">
+        <EffectText fontSize="2.2rem" pixelMode borderOffset={3.0}>
+          Leaderboard
+        </EffectText>
+      </div>
+      <div className="leaderboard">
+        {sortedUsers.map((user, index) => (
+          <LeaderboardItem
+            key={user.username}
+            rank={index + 1}
+            username={user.username}
+            profilePic={user.profilePicture}
+            score={user.total_score}
+            playTime={user.totalPlayTime()} // Valor por defecto si `play_time` no existe
+          />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 interface LeaderboardItemProps {
-    rank: number;
-    username: string;
-    profilePic: string;
-    score: number;
-    playTime: number;
+  rank: number;
+  username: string;
+  profilePic: string;
+  score: number;
+  playTime: number;
 }
 
-function LeaderboardItem({ rank, username, profilePic, score, playTime }: LeaderboardItemProps) {
-    return (
-        <div className="leaderboard-item">
-            <div className="rank">#{rank}</div>
-            <img
-                src={profilePic}
-                alt={`Profile picture of ${username}`}
-                className="profile-pic"
-            />
-            <div className="user-info">
-                <EffectText
-                    fontSize="1.2rem"
-                    pixelMode
-                    borderOffset={5.0}
+function LeaderboardItem({
+  rank,
+  username,
+  profilePic,
+  score,
+  playTime,
+}: LeaderboardItemProps) {
+  return (
+    <div className="leaderboard-item">
+      <div className="column rank-column">
+        <div className="rank">#{rank}</div>
+      </div>
 
-                >
-                    {username}
-                </EffectText>
-                <EffectText fontSize={"0.8rem"}>Total Score: {score}</EffectText>
-                <EffectText fontSize={"0.8rem"}>Play Time: {playTime} min</EffectText>
-            </div>
-        </div>
-    );
+      <div className="column avatar-column">
+        <img
+          src={profilePic}
+          alt={`Profile picture of ${username}`}
+          className="profile-pic"
+        />
+      </div>
+
+      <div className="column username-column">
+        <div className="username-text">{username.toUpperCase()}</div>
+      </div>
+
+      <div className="column stats-column">
+        <div className="stats-text">Total Score: {score}</div>
+        <div className="stats-text">Play Time: {playTime} min</div>
+      </div>
+    </div>
+  );
 }
 
 export default Leaderboard;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import User from "../../../gamedev-web-frontend/src/interfaces/User";
+import {User} from "../interfaces/User";
 
 function useFetchUsers(apiUrl: string) {
     const [users, setUsers] = useState<User[]>([]);

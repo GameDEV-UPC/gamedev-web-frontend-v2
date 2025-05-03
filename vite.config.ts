@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],resolve: {
+
     alias: {
       '@components': '/src/components',
       '@hooks': '/src/hooks',
@@ -16,4 +17,8 @@ export default defineConfig({
       '@utils': '/src/utils', // Puedes agregar más alias si necesitas
     },
     },
+  server: {
+    port: 5173,
+    host: true, // Opcional: permite acceso desde otras IPs
+  },
 })

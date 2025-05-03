@@ -1,5 +1,5 @@
 /* Estilo de los campos de input con el estilo del botón */
-.inputField  {
+.bit-input  {
     width: 100%;
     height: 60px;
     position: relative;
@@ -20,28 +20,28 @@
     justify-content: center;
 }
 
-.inputField:hover {
+.bit-input:hover {
     transform: translate(2px, 2px);
     box-shadow: 4px 4px 0 #fff;
 }
 
-.inputField:active  {
+.bit-input:active  {
     transform: translate(6px, 6px);
     box-shadow: 0 0 0 #fff;
 }
 
 /* Estilo cuando los input fields están enfocados */
-.inputField.focused{
+.bit-input.focused{
     border-color: #0f0; /* Verde */
     box-shadow: 3px 3px 0 #0f0;
     color: #0f0;
 }
 
-.inputField.focused input{
+.bit-input.focused input{
     color: #0f0;
 }
 
-.inputField input {
+.bit-input input {
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -54,7 +54,7 @@
     font-family: "Press Start 2P";
 }
 
-.inputField input::placeholder {
+.bit-input input::placeholder {
     color: rgba(255, 255, 255, 0.5);
     font-weight: normal;
 }

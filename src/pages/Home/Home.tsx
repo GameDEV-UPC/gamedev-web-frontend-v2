@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import BitButton from "@components/BitButton/BitButton.tsx";
+import BitButton from "../../components/BitButton/BitButton.tsx";
 import { useNavigate } from "react-router-dom";
-import EffectText from "@components/EffectText/EffectText.tsx";
+import EffectText from "../../components/EffectText/EffectText.tsx";
 import xIcon from "@icons/icons8-x.svg";
 import instaIcon from "@icons/icons8-insta.svg";
 import gitIcon from "@icons/icons8-github.svg";

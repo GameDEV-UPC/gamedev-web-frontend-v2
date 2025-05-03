@@ -1,10 +1,10 @@
 import React from "react";
 import "@pages/log/Login.css"
-import BitTextField from "@components/BitInput/BitInput.tsx";
-import BitInputPassword from "@components/BitInputPassword/BitInputPassword.tsx";
-import useFormHandler from "@hooks/useFormHandler";
-import BitButton from "@components/BitButton/BitButton.tsx";
-import EffectText from "@components/EffectText/EffectText.tsx";
+import BitTextField from "../../../components/BitInput/BitInput.tsx";
+import BitInputPassword from "../../../components/BitInputPassword/BitInputPassword.tsx";
+import useFormHandler from "../../../hooks/useFormHandler";
+import BitButton from "../../../components/BitButton/BitButton.tsx";
+import EffectText from "../../../components/EffectText/EffectText.tsx";
 
 function SignUp() {
     const { values, errorMessage, isLoading, setErrorMessage, setIsLoading, handleChange } = useFormHandler({
@@ -69,8 +69,6 @@ function SignUp() {
                 />
                 <BitInputPassword
                     placeholder="Enter your password"
-                    value={values.password}
-                    onChange={(e) => handleChange("password", e.target.value)}
                 />
 
 

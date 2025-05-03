@@ -12,7 +12,7 @@ function BitInput({ placeholder = 'Enter text', value, onChange, type = 'text' }
     const [isFocused, setIsFocused] = useState(false);
 
     return (
-        <div className={`inputField ${isFocused ? 'focused' : ''}`}>
+        <div className={`bit-input ${isFocused ? 'focused' : ''}`}>
 
             <input
                 type={type}
