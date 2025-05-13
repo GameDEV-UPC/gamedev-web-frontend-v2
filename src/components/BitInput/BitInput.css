@@ -1,7 +1,6 @@
 .bit-input {
-    width: 100%;
+    width: 80%;
     height: 60px;
-    position: relative;
     border-radius: 2px;
     background: #111;
   
@@ -13,29 +12,10 @@
     box-shadow: 0 0 6px #ffffff, 0 0 12px #000000, inset 0 0 4px #f7f7f7;
 
     padding: 2px 24px;
-    letter-spacing: 2px;
-    display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-  }
-  
-  .bit-input::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.02) 2px,
-      transparent 2px,
-      transparent 4px
-    );
-    animation: scanlines 0.25s linear infinite;
-    pointer-events: none;
+    box-sizing: border-box;
+    margin: 10px;
   }
   
   .bit-input:hover {
@@ -113,5 +93,18 @@
     }
     to {
       text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
+    }
+  }
+
+
+  @media (max-width: 600px) {
+    .bit-input input::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bit-input input::placeholder {
+      font-size: 10px;
     }
   }

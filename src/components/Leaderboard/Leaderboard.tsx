@@ -58,11 +58,7 @@ function LeaderboardItem({
       </div>
 
       <div className="column avatar-column">
-        <img
-          src={profilePic}
-          alt={`Profile picture of ${username}`}
-          className="profile-pic"
-        />
+
       </div>
 
       <div className="column username-column">

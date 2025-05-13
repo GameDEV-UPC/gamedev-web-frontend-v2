@@ -80,7 +80,7 @@ export function BitInputPassword({ placeholder }: BitInputPasswordProps) {
   };
 
   return (
-    <div>
+
       <ul
         className={`bit-password ${isFocused ? "focused" : ""}`}
         style={{ display: "flex", alignItems: "center" }}
@@ -100,12 +100,11 @@ export function BitInputPassword({ placeholder }: BitInputPasswordProps) {
           className={`show-hide ${isAnimating ? "disabled" : ""}`}
           onClick={() => setHide((prev) => !prev)}
           disabled={isAnimating}
-          style={{ marginLeft: "10px" }}
+          style={{ marginLeft: "0px" }}
         >
           <FontAwesomeIcon className="icon" icon={hide ? faEye : faEyeSlash} />
         </button>
       </ul>
-    </div>
   );
 }
 

@@ -68,8 +68,6 @@ function Login() {
         />
         <BitInputPassword
           placeholder="Enter your password"
-          value={values.password}
-          onChange={(e) => handleChange("password", e.target.value)}
         />
 
         <BitButton onClick={handleLogin}>

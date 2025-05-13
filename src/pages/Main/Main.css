@@ -8,6 +8,7 @@
     justify-content: flex-start; /* Evita que los elementos se centren verticalmente */
     width: 100%;
     margin-top: 15vh;
+    box-sizing: border-box;
 }
 
 /* Firefox */

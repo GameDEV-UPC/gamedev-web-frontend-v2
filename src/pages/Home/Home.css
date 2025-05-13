@@ -40,7 +40,6 @@
   .button-container {
     display: flex;
     justify-content: center;
-    gap: 30px;
     flex-wrap: wrap;
   }
   .bit-button{
@@ -120,12 +119,6 @@
       font-size: 1.5rem;
     }
   
-    .bit-button {
-      flex-direction: column;
-      gap: 20px;
-      width: 100%;
-    }
-  
     .footer-links {
       gap: 12px;
     }
@@ -142,10 +135,14 @@
     .presentation-title {
       font-size: 1.2rem;
     }
+
+    .logo-title{
+      font-size: 2.2rem;
+    }
   
     .footer-links a {
       font-size: 0.65rem;
     }
    
+    
   }
-  

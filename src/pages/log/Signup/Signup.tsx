@@ -4,7 +4,6 @@ import BitTextField from "../../../components/BitInput/BitInput.tsx";
 import BitInputPassword from "../../../components/BitInputPassword/BitInputPassword.tsx";
 import useFormHandler from "../../../hooks/useFormHandler";
 import BitButton from "../../../components/BitButton/BitButton.tsx";
-import h2 from "../../../components/h2/h2.tsx";
 
 function SignUp() {
   const {
