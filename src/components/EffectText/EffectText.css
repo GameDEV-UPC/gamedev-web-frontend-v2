@@ -75,3 +75,19 @@
         height: 0;
     }
 }
+@keyframes textflicker {
+  from {
+    text-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
+  }
+  to {
+    text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
+  }
+}
+
+.effect-text {
+  font-family: 'Nintendoid1', 'Press Start 2P', cursive;
+  color: #eee;
+  text-shadow: 0.06rem 0 0.06rem #ea36af, -0.125rem 0 0.06rem #75fa69;
+  letter-spacing: 0.125em;
+  animation: textflicker 0.01s infinite alternate;
+}

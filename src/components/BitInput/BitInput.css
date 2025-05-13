@@ -1,47 +1,67 @@
-/* Estilo de los campos de input con el estilo del botón */
-.bit-input  {
+.bit-input {
     width: 100%;
     height: 60px;
     position: relative;
     border-radius: 2px;
-    background: #000;
-    border: 3px solid #fff;
-    color: #fff;
+    background: #111;
+  
+    color: #75fa69;
     font-family: "Press Start 2P";
     font-size: 14px;
     text-transform: uppercase;
     transition: all 0.2s, box-shadow 0.3s ease-in-out;
-    box-shadow: 6px 6px 0 #fff;
-    padding: 2px 24px;
+    box-shadow: 0 0 6px #ffffff, 0 0 12px #000000, inset 0 0 4px #f7f7f7;
 
+    padding: 2px 24px;
     letter-spacing: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.bit-input:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 4px 4px 0 #fff;
-}
-
-.bit-input:active  {
-    transform: translate(6px, 6px);
-    box-shadow: 0 0 0 #fff;
-}
-
-/* Estilo cuando los input fields están enfocados */
-.bit-input.focused{
-    border-color: #0f0; /* Verde */
-    box-shadow: 3px 3px 0 #0f0;
-    color: #0f0;
-}
-
-.bit-input.focused input{
-    color: #0f0;
-}
-
-.bit-input input {
+    overflow: hidden;
+  }
+  
+  .bit-input::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0.02) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    animation: scanlines 0.25s linear infinite;
+    pointer-events: none;
+  }
+  
+  .bit-input:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 0 0 12px #0ff, 0 0 24px #75fa69, inset 0 0 6px #ea36af;
+    border-color: #0ff;
+  }
+  
+  .bit-input:active {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+  }
+  
+  /* Estilo cuando los input fields están enfocados */
+  .bit-input.focused {
+    border-color: #0ff;
+    box-shadow: 0 0 16px #0ff, 0 0 32px #ea36af, inset 0 0 8px #75fa69;
+    animation: borderflicker 0.3s infinite alternate;
+    color: #0ff;
+  }
+  
+  .bit-input.focused input {
+    color: #0ff;
+  }
+  
+  .bit-input input {
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -49,12 +69,49 @@
     border: none;
     color: inherit;
     font-weight: bold;
-    text-align:  left;
+    text-align: left;
     transition: color 0.3s ease-in-out;
     font-family: "Press Start 2P";
-}
-
-.bit-input input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0.06rem 0 0.06rem #ea36af, -0.125rem 0 0.06rem #75fa69;
+    letter-spacing: 0.125em;
+    animation-duration: 0.01s;
+    animation-name: textflicker;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  
+  }
+  
+  .bit-input input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
     font-weight: normal;
-}
+    text-shadow: 0.06rem 0 0.06rem #ea36af, -0.125rem 0 0.06rem #75fa69;
+    letter-spacing: 0.125em;
+    animation-duration: 0.01s;
+    animation-name: textflicker;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  
+  /* Flicker para el borde */
+  @keyframes borderflicker {
+    0% {
+      box-shadow: 0 0 6px #ea36af, 0 0 12px #75fa69, inset 0 0 4px #ea36af;
+    }
+    50% {
+      box-shadow: 0 0 14px #0ff, 0 0 28px #ea36af, inset 0 0 8px #75fa69;
+    }
+    100% {
+      box-shadow: 0 0 6px #ea36af, 0 0 12px #75fa69, inset 0 0 4px #ea36af;
+    }
+  }
+  
+  
+  @keyframes textflicker {
+    from {
+      text-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
+    }
+    to {
+      text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
+    }
+  }

@@ -1,31 +1,54 @@
 .bit-button {
-    width:500px;
-    background: #000;
-    border: 3px solid #fff;
-    color: #fff;
-    padding: 10px 10%;
-    height: 60px;
-    cursor: pointer;
-
-    transition: all 0.2s;
-
-
-    position: relative;
-    box-shadow: 3px 3px 0 #fff;
-    align-items: center;
-
+  width: 300px;
+  background: #111 !important; /* fondo negro */
+  border: 3px solid #ea36ae00 !important; /* borde neón rosa */
+  color: #75fa69; /* verde fosforescente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  cursor: pointer;
+  
+  transition: all 0.15s ease-in-out;
+  position: relative;
+  overflow: hidden;
 }
 
-
 .bit-button:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 #0f0;
-    color: #0f0;
-    border: 3px solid #0f0;
-
+  transform: translate(1px, 1px);
+  border-color: #0ff;
+  box-shadow: 0 0 8px #0ff, 0 0 16px #75fa69;
+  animation: borderflicker 0.2s infinite alternate;
+  color: #0ff;
 }
 
 .bit-button:active {
-    transform: translate(6px, 6px);
-    box-shadow: 0 0 0 #fff;
+  transform: translate(3px, 3px);
+  box-shadow: none;
+  border-color: #fff;
+}
+
+.bit-button-text {
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  color: #75fa69;
+  text-shadow: 0 0 4px #75fa69, 0 0 8px #ea36af;
+  z-index: 2;
+}
+
+/* flicker animación en hover */
+@keyframes borderflicker {
+  0% {
+    box-shadow: 0 0 4px #ea36af, 0 0 8px #75fa69;
+  }
+  50% {
+    box-shadow: 0 0 8px #75fa69, 0 0 16px #ea36af;
+  }
+  100% {
+    box-shadow: 0 0 4px #ea36af, 0 0 8px #75fa69;
+  }
 }

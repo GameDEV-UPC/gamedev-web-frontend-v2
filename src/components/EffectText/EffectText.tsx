@@ -1,5 +1,4 @@
 import { useEffect, useState, ReactNode, JSX } from "react";
-import "@fontsource/silkscreen";
 import "./EffectText.css";
 import React from "react";
 
@@ -32,14 +31,13 @@ function EffectText({
           `
         : "none";
 
-      // Si es espacio, renderiza span especial
       if (char === " ") {
         return (
           <span
             key={charIndex}
             style={{
               display: "inline-block",
-              width: `0.5em`, // aquí defines cuánto ocupa un espacio visualmente
+              width: `0.5em`,
             }}
           />
         );
@@ -47,16 +45,12 @@ function EffectText({
 
       return (
         <span
-          className="effect-text"
+          className={`effect-text-${className}`}
           key={charIndex}
           style={{
             animationDelay: `${0.05 * charIndex}s`,
             fontSize,
-            textShadow,
-            color: pixelMode ? "black" : "white",
-            backgroundColor: pixelMode ? "transparent" : "black",
-            padding: pixelMode ? "0" : "0em",
-            borderRadius: pixelMode ? "0" : "4px",
+            textShadow: pixelMode ? textShadow : undefined,
           }}
         >
           <b>{char}</b>
@@ -65,9 +59,9 @@ function EffectText({
     });
 
     setAnimatedText(letters);
-  }, [children, fontSize, pixelMode, borderOffset]);
+  }, [children, fontSize, pixelMode, className, borderOffset]);
 
-  return <div className={`txt ${className}`}>{animatedText}</div>;
+  return <span>{animatedText}</span>;
 }
 
 export default EffectText;

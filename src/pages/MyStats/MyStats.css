@@ -8,6 +8,7 @@
   
   .section {
     margin-bottom: 40px;
+    background-color: transparent !important;
   }
   
   /* Profile */
@@ -42,10 +43,12 @@
     width: 100%;
     max-width: 550px;
     margin: 0 auto;
+    background-color: transparent !important;
+  
   }
   
   .info {
-    background: #000;
+    background: #00000000;
     border: 3px solid #fff;
     box-shadow: 4px 4px 0 #fff;
     display: flex;
@@ -71,7 +74,8 @@
   }
   
   .stat-item {
-    background: #000;
+    background-color: transparent !important;
+  
     border: 3px solid #fff;
     box-shadow: 4px 4px 0 #fff;
     padding: 12px 20px;
@@ -98,7 +102,8 @@
   }
   
   .game-card {
-    background: #000;
+    background-color: transparent !important;
+  
     border: 3px solid #fff;
     box-shadow: 4px 4px 0 #fff;
     padding: 16px;

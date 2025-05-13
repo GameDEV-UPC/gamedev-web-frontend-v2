@@ -32,7 +32,7 @@ function MainContent() {
   const location = useLocation();
 
   function shouldShowNavbar(pathname: string) {
-    const showNavbarPaths = ["/main", "/mystats", "/about", "/tutorial"];
+    const showNavbarPaths = ["/main", "/mystats", "/about"];
     return showNavbarPaths.includes(pathname);
   }
 
@@ -70,14 +70,7 @@ function MainContent() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/tutorial"
-          element={
-            <ProtectedRoute>
-              <Tutorial />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/tutorial" element={<Tutorial />} />
 
         {/* Ruta comodín */}
         <Route path="*" element={<RedirectToProperPage />} />

@@ -1,170 +1,151 @@
-
-/* Contenedor principal que cubre toda la altura de la pantalla */
+/* 📦 Contenedor general */
 .container {
     display: flex;
     flex-direction: column;
-    height: 97vh;  /* Esto asegura que ocupe toda la pantalla */
-    overflow: hidden;  /* Evita el scroll */
-
-}
-
-/* Cuerpo de la página (la parte que ocupa el 90% de la pantalla) */
-.presentation-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;  /* Ocupa el 90% de la pantalla */
-    background-color: #000;
+    height: 100vh;
+    overflow: hidden;
+    background: #111;
     color: #fff;
+    font-family:'Nintendoid1', cursive;
+  }
+  .logo-title {
+    font-family: 'Nintendoid1', 'Press Start 2P', cursive;
+    color: #fff;
+    text-shadow: 4px 4px 0 #fff, 6px 6px 5px rgba(255, 255, 255, 0.3);
+    font-size: 4rem;
     text-align: center;
-    font-family: 'Press Start 2P', cursive;
-    padding: 20px;  /* Espacio interno para que no se pegue al borde */
-    gap: 50px;
-    overflow: hidden;  /* Evita que haya scroll en el cuerpo */
-
-}
-
-/* Footer (que ocupa el 10% de la pantalla) */
-.footer {
-    height: 10vh;  /* 10% de la pantalla */
-    width: 100%;
-    background: black;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 0.8rem;
-    border-top: 4px solid white;  /* Para que el borde se vea bien alineado */
-    font-family: 'Press Start 2P', cursive;
+    margin-bottom: 20px;
+  }
+  /* 📖 Sección principal */
+  .presentation-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-}
-
-
-.presentation-title {
-
+    align-items: center;
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    gap: 50px;
+  }
+  
+  /* Título animado */
+  .presentation-title {
     font-size: 2rem;
-    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 30px;
-    text-shadow: 4px 4px 0px #fff, 6px 6px 5px rgba(255, 255, 255, 0.3);
-}
-
-
-.presentation-container img{
-    width: 100%;
-    max-width: 50px;
-
-}
-.button-container {
+    text-shadow: 4px 4px 0 #fff, 6px 6px 5px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Botones principales */
+  .button-container {
     display: flex;
     justify-content: center;
-
     gap: 30px;
-    margin-top: 20px;
-    width: 60%;
-    height: 50px;
-
-}
-.footer-links {
-    align-items: center;
+    flex-wrap: wrap;
+  }
+  .bit-button{
     display: flex;
-    gap: 15px;
+    align-items: center;
     justify-content: center;
-    padding-top: 10px;
-}
-
-.footer-links a {
+    padding: 10px 20px;
+    border: none;
+    width: 100px;
+    height: 50px;
+    
+  }
+  
+  /* 📎 Footer */
+  .footer {
+    padding: 10px 0;
+    border-top: 4px solid #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  /* Enlaces del footer */
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s ease-in-out;
-}
-
-.footer-links a:hover {
+    font-size: 0.75rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
     color: #0f0;
-}
-.footer-links .txt{
-    font-size: 0.6rem   ;
-    transition: font-size 0.3s ease-in-out;
-}
-.footer-links .txt:hover{
-    font-size: 0.5rem   ;
-}
-@media (max-width: 768px) {
-    .button-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-}
-
-/* Social Media Icons */
-.social-icons {
-    justify-content: center;
+  }
+  
+  /* Iconos de redes */
+  .social-icons {
     display: flex;
-    gap: 15px;
-}
-
-.social-icons a {
-
-    color: #fff;
-    font-size: 1.2rem;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-.social-icons img{
+    justify-content: center;
+    gap: 20px;
+  }
+ /* 📺 VHS neon flicker para iconos de redes */
+.social-icons img {
     width: 25px;
-}
-
-.social-icons a:hover {
-    transform: scale(0.75);
-    color: #f39c12;
-}
-
-@media (max-width: 768px) {
-    .presentation-container{
-        gap: 15px;
-        padding-top: 0px;
-    }
-    .presentation-title {
-        font-size: 1.5rem;
-        margin-top: -200px;
-    }
-    .button-container {
-        width: auto;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .footer {
-        padding: 20px 10px;
-    }
-
-    .footer-links {
-        flex-direction: column;
-        gap: 8px;
-    }
-    .presentation-title .txt {
-        font-size: 40px;
-
-        text-shadow:
-
-                3px 0px 0px #ffffff, /* Sombra gruesa para efecto 3D */
-                0px -1px 0px #ffffff, /* Sombra gruesa para efecto 3D */
-                -1px 0px 0px #ffffff, /* Sombra gruesa para efecto 3D */
-                0px 3px 0px rgb(255, 255, 255); /* Sombra difuminada para más profundidad */
-    }
-}
-
-@keyframes fadeIn {
+    transition: transform 0.3s ease;
+    animation: iconFlicker 0.03s infinite alternate;
+    filter: drop-shadow(0 0 1px #ea36af) drop-shadow(0 0 1px #75fa69);
+  }
+  
+  .social-icons img:hover {
+    transform: scale(0.8);
+    filter: drop-shadow(0 0 3px #ea36af) drop-shadow(0 0 3px #75fa69);
+  }
+  
+  /* 📀 Animación flicker tipo VHS */
+  @keyframes iconFlicker {
     from {
-        opacity: 0;
-        transform: translateY(-20px);
+      filter: drop-shadow(1px 0 1px #ea36af) drop-shadow(-1px 0 1px #75fa69);
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+      filter: drop-shadow(2px 1px 2px #ea36af) drop-shadow(-2px -1px 2px #75fa69);
     }
-}
-
+  }
+  
+  
+  
+  /* 📱 Responsive */
+  @media (max-width: 768px) {
+    .presentation-title {
+      font-size: 1.5rem;
+    }
+  
+    .bit-button {
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+  
+    .footer-links {
+      gap: 12px;
+    }
+  
+    .social-icons {
+      gap: 12px;
+    }
+    .logo-title{
+        font-size: 3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .presentation-title {
+      font-size: 1.2rem;
+    }
+  
+    .footer-links a {
+      font-size: 0.65rem;
+    }
+   
+  }
+  
