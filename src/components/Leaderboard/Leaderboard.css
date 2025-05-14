@@ -86,7 +86,20 @@
   font-size: 1.2rem;
   color: #0ff;
 }
+.gold {
+  background-color: #ffd700;
+  color: #000;
+}
 
+.silver {
+  background-color: #c0c0c0;
+  color: #000;
+}
+
+.bronze {
+  background-color: #cd7f32;
+  color: #000;
+}
 /* Stats columna */
 .stats-column {
   flex: 0 0 200px;
@@ -94,11 +107,13 @@
   flex-direction: column;
   gap: 6px;
   align-items: flex-end;
+  width: 200px;
 }
 
 .stats-text {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: #ccc;
+  width: 500px;
 }
 
 /* Responsive tablets */

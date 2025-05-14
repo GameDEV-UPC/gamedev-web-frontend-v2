@@ -23,7 +23,7 @@
     
   }
   .tutorial-container h1 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     margin-bottom: 2rem;
   }
   
@@ -37,7 +37,7 @@
   }
   
   .color-picker label {
-    font-size: 0.6rem;
+    font-size: 1.6rem;
     font-weight: bold;
     margin-right: 0.5rem;
     display: flex;

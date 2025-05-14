@@ -3,31 +3,43 @@ import BitInput from "../../components/BitInput/BitInput";
 import BitButton from "../../components/BitButton/BitButton";
 import "./Tutorial.css";
 import EffectText from "../../components/EffectText/EffectText";
+import { useAuth } from "../../hooks/AuthProvider"; // Importa el hook useAuth
+import { useNavigate } from "react-router-dom";
 
 const Tutorial: React.FC = () => {
-  const [nick, setNick] = useState("");
+  const { user } = useAuth(); // Obtén el usuario logueado desde el contexto
   const [color, setColor] = useState("#ff0000");
-
+  const navigate = useNavigate();
   const handleJoin = async () => {
-    console.log("Nick:", nick);
+    if (!user) {
+      console.error("No user is logged in.");
+      return;
+    }
+
+    const username = user.username; // Usa el nombre de usuario del usuario logueado
+
+    console.log("Username:", username);
     console.log("Color:", color);
+
     try {
-      const response = await fetch("http://127.0.0.1:8000/join", {
+      const response = await fetch("https://api.gamedev.study/marbles/join", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          nick: nick,
           color: color,
+          username: username,
         }),
       });
 
       if (response.ok) {
         const data = await response.json();
         console.log("Respuesta del servidor:", data);
+        navigate("/leave"); // Redirige a la página de Leave
       } else {
         console.error("Error en la petición:", response.statusText);
+        navigate("/leave");
       }
     } catch (error) {
       console.error("Error al conectar con la API:", error);
@@ -38,14 +50,6 @@ const Tutorial: React.FC = () => {
     <div className="container">
       <EffectText fontSize="1.3rem">Try It!</EffectText>
       <div className="input-container">
-        <BitInput
-          placeholder="Enter your username"
-          value={nick}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setNick(e.target.value)
-          }
-        />
-
         <div className="color-picker">
           <label className="color-text">Choose your color:</label>
           <input

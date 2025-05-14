@@ -16,6 +16,7 @@ import Login from "./pages/log/Login/Login.tsx";
 import SignUp from "./pages/log/Signup/Signup.tsx";
 import Main from "./pages/Main/Main.tsx";
 import Tutorial from "./pages/Tutorial/Tutorial.tsx";
+import Leave from "./pages/Tutorial/Leave.tsx";
 
 function App() {
   return (
@@ -67,6 +68,14 @@ function MainContent() {
           element={
             <ProtectedRoute>
               <About />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leave"
+          element={
+            <ProtectedRoute>
+              <Leave />
             </ProtectedRoute>
           }
         />

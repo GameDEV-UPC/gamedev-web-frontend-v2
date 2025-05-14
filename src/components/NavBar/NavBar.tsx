@@ -11,9 +11,8 @@ function NavBar() {
   const navigate = useNavigate();
 
   const options = [
-    { value: 0, label: "My Stats", path: "/mystats" },
-    { value: 1, label: "Home", path: "/main" },
-    { value: 2, label: "About", path: "/about" },
+    { value: 0, label: "Home", path: "/main" },
+    { value: 1, label: "Canicas", path: "/tutorial" },
   ];
 
   useEffect(() => {
