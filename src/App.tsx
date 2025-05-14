@@ -73,16 +73,19 @@ function MainContent() {
         <Route path="/tutorial" element={<Tutorial />} />
 
         {/* Ruta comodín */}
+
+        <Route path="/" element={<RedirectToProperPage />} />
         <Route path="*" element={<RedirectToProperPage />} />
       </Routes>
     </>
   );
 }
 
-// Componente para manejar redirecciones según autenticación
 function RedirectToProperPage() {
-  const { isAuthenticated } = useAuth(); // Supone que `useAuth` tiene `isAuthenticated`
+  const { isAuthenticated, loading } = useAuth();
 
+  if (loading) return null; // o un spinner opcional
+  console.log("isAuthenticated" + localStorage.getItem("user"));
   return isAuthenticated ? (
     <Navigate to="/main" replace />
   ) : (

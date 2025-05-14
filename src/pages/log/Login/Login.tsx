@@ -5,11 +5,14 @@ import BitInputPassword from "../../../components/BitInputPassword/BitInputPassw
 import useFormHandler from "../../../hooks/useFormHandler";
 import BitButton from "../../../components/BitButton/BitButton.tsx";
 import { useAuth } from "../../../hooks/AuthProvider.tsx";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Login() {
-  const { login } = useAuth();
+  const { isAuthenticated, login } = useAuth();
   const navigate = useNavigate();
+  if (isAuthenticated) {
+    return <Navigate to="/main" replace />;
+  }
   const {
     values,
     errorMessage,
