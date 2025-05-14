@@ -1,16 +1,16 @@
 import "./Leaderboard.css";
-import { User } from "../../interfaces/User";
+import { UserLeaderboard } from "../../pages/Main/Main.tsx";
 
 import EffectText from "../../components/EffectText/EffectText.tsx";
 
 interface LeaderboardProps {
-  users: User[];
+  users: UserLeaderboard[];
 }
 
 function Leaderboard({ users }: LeaderboardProps) {
   // Ordenar usuarios por puntuación de forma descendente
   const sortedUsers = [...users].sort(
-    (a, b) => (Number(b.total_score) || 0) - (Number(a.total_score) || 0)
+    (a, b) => (Number(b.high_score) || 0) - (Number(a.high_score) || 0)
   );
 
   return (
@@ -26,9 +26,8 @@ function Leaderboard({ users }: LeaderboardProps) {
             key={user.username}
             rank={index + 1}
             username={user.username}
-            profilePic={user.profilePicture}
-            score={user.total_score}
-            playTime={user.totalPlayTime()} // Valor por defecto si `play_time` no existe
+            score={user.high_score}
+            // Valor por defecto si `play_time` no existe
           />
         ))}
       </div>
@@ -39,35 +38,25 @@ function Leaderboard({ users }: LeaderboardProps) {
 interface LeaderboardItemProps {
   rank: number;
   username: string;
-  profilePic: string;
+
   score: number;
-  playTime: number;
 }
 
-function LeaderboardItem({
-  rank,
-  username,
-  profilePic,
-  score,
-  playTime,
-}: LeaderboardItemProps) {
+function LeaderboardItem({ rank, username, score }: LeaderboardItemProps) {
   return (
     <div className="leaderboard-item">
       <div className="column rank-column">
         <div className="rank">#{rank}</div>
       </div>
 
-      <div className="column avatar-column">
-
-      </div>
+      <div className="column avatar-column"></div>
 
       <div className="column username-column">
         <div className="username-text">{username.toUpperCase()}</div>
       </div>
 
       <div className="column stats-column">
-        <div className="stats-text">Total Score: {score}</div>
-        <div className="stats-text">Play Time: {playTime} min</div>
+        <div className="stats-text">High Score: {score}</div>
       </div>
     </div>
   );
