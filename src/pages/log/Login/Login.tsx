@@ -5,9 +5,11 @@ import BitInputPassword from "../../../components/BitInputPassword/BitInputPassw
 import useFormHandler from "../../../hooks/useFormHandler";
 import BitButton from "../../../components/BitButton/BitButton.tsx";
 import { useAuth } from "../../../hooks/AuthProvider.tsx";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { login } = useAuth();
+  const navigate = useNavigate();
   const {
     values,
     errorMessage,
@@ -26,7 +28,7 @@ function Login() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://10.5.160.163:8000/auth/login", {
+      const response = await fetch("https://api.gamedev.study/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -43,10 +45,9 @@ function Login() {
       const data = await response.json();
       console.log("Usuario logeado:", data);
 
-      // Guarda info del usuario si querés
       localStorage.setItem("user", JSON.stringify(data.user));
-
-      login(); // marcar como autenticado
+      navigate("/main");
+      login(data.user);
     } catch (error: any) {
       setErrorMessage(error.message || "Failed to login. Please try again.");
     } finally {
@@ -68,6 +69,8 @@ function Login() {
         />
         <BitInputPassword
           placeholder="Enter your password"
+          value={values.password}
+          onChange={(e) => handleChange("password", e.target.value)}
         />
 
         <BitButton onClick={handleLogin}>

@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
-import "./BitInputPassword.css"; // Importamos el archivo de estilos CSS
+import "./BitInputPassword.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
 interface BitInputPasswordProps {
   placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function BitInputPassword({ placeholder }: BitInputPasswordProps) {
-  const [value, setValue] = useState("");
+export function BitInputPassword({
+  placeholder,
+  value,
+  onChange,
+}: BitInputPasswordProps) {
   const [hide, setHide] = useState(true);
   const [displayValue, setDisplayValue] = useState("Enter Password");
   const [isAnimating, setIsAnimating] = useState(false);
@@ -22,7 +28,6 @@ export function BitInputPassword({ placeholder }: BitInputPasswordProps) {
     const maskedValue = "#".repeat(originalValue.length).split("");
     const animationFrames = 15;
     const interval = 20;
-
     let step = 0;
 
     const intervalId = setInterval(() => {
@@ -48,26 +53,32 @@ export function BitInputPassword({ placeholder }: BitInputPasswordProps) {
 
   useEffect(() => {
     animateTransition(hide);
-  }, [hide]);
+  }, [hide, value]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { selectionStart, selectionEnd, value: newValue } = e.target;
+    const inputValue = e.target.value;
+    let updatedValue = value;
 
-    setValue((prevValue) => {
-      if (selectionStart !== selectionEnd) {
-        return newValue; // Si hay selección, reemplaza el texto seleccionado
+    if (hide) {
+      // Control manual para esconder
+      if (inputValue.length > value.length) {
+        updatedValue += inputValue.slice(-1);
+      } else if (inputValue.length < value.length) {
+        updatedValue = value.slice(0, -1);
       }
-      if (hide) {
-        if (newValue.length > prevValue.length) {
-          return prevValue + newValue.slice(-1); // Agrega el último carácter escrito
-        } else if (newValue.length < prevValue.length) {
-          return prevValue.slice(0, -1); // Borra el último carácter
-        }
-      } else {
-        return newValue;
-      }
-      return prevValue;
-    });
+    } else {
+      updatedValue = inputValue;
+    }
+
+    const fakeEvent = {
+      ...e,
+      target: {
+        ...e.target,
+        value: updatedValue,
+      },
+    };
+
+    onChange(fakeEvent as React.ChangeEvent<HTMLInputElement>);
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
@@ -80,31 +91,30 @@ export function BitInputPassword({ placeholder }: BitInputPasswordProps) {
   };
 
   return (
-
-      <ul
-        className={`bit-password ${isFocused ? "focused" : ""}`}
-        style={{ display: "flex", alignItems: "center" }}
+    <ul
+      className={`bit-password ${isFocused ? "focused" : ""}`}
+      style={{ display: "flex", alignItems: "center" }}
+    >
+      <input
+        type="text"
+        value={
+          isAnimating ? displayValue : hide ? "#".repeat(value.length) : value
+        }
+        onChange={handleInputChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onClick={(event) => event.currentTarget.select()}
+        placeholder={placeholder}
+      />
+      <button
+        className={`show-hide ${isAnimating ? "disabled" : ""}`}
+        onClick={() => setHide((prev) => !prev)}
+        disabled={isAnimating}
+        style={{ marginLeft: "0px" }}
       >
-        <input
-          type="text"
-          value={
-            isAnimating ? displayValue : hide ? "#".repeat(value.length) : value
-          }
-          onChange={handleInputChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onClick={(event) => event.currentTarget.select()}
-          placeholder={placeholder}
-        />
-        <button
-          className={`show-hide ${isAnimating ? "disabled" : ""}`}
-          onClick={() => setHide((prev) => !prev)}
-          disabled={isAnimating}
-          style={{ marginLeft: "0px" }}
-        >
-          <FontAwesomeIcon className="icon" icon={hide ? faEye : faEyeSlash} />
-        </button>
-      </ul>
+        <FontAwesomeIcon className="icon" icon={hide ? faEye : faEyeSlash} />
+      </button>
+    </ul>
   );
 }
 

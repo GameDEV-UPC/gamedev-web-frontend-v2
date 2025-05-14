@@ -4,8 +4,13 @@ import BitTextField from "../../../components/BitInput/BitInput.tsx";
 import BitInputPassword from "../../../components/BitInputPassword/BitInputPassword.tsx";
 import useFormHandler from "../../../hooks/useFormHandler";
 import BitButton from "../../../components/BitButton/BitButton.tsx";
+import { User } from "../../../interfaces/User.tsx";
+import { useAuth } from "../../../hooks/AuthProvider.tsx";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const {
     values,
     errorMessage,
@@ -26,10 +31,15 @@ function SignUp() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://0.0.0.0:8000/users/register", {
+      const response = await fetch("https://api.gamedev.study/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          username: values.username,
+          fullname: values.fullName,
+          email: values.email,
+          password: values.password,
+        }),
       });
 
       if (!response.ok) {
@@ -38,6 +48,10 @@ function SignUp() {
       }
 
       console.log("Usuario registrado exitosamente!");
+      const data = await response.json();
+      localStorage.setItem("user", JSON.stringify(data.user));
+      navigate("/main");
+      login(data.user);
     } catch (error) {
       setErrorMessage(
         error.message || "Failed to register user. Please try again."
@@ -68,7 +82,11 @@ function SignUp() {
           value={values.username}
           onChange={(e) => handleChange("username", e.target.value)}
         />
-        <BitInputPassword placeholder="Enter your password" />
+        <BitInputPassword
+          placeholder="Enter your password"
+          value={values.password}
+          onChange={(e) => handleChange("password", e.target.value)}
+        />
 
         <BitButton onClick={handleRegister}>
           {isLoading ? "Loading..." : "SIGN UP"}
