@@ -83,8 +83,8 @@ function MainContent() {
 
         {/* Ruta comodín */}
 
-        <Route path="/" element={<RedirectToProperPage />} />
-        <Route path="*" element={<RedirectToProperPage />} />
+        <Route path="" element={<Home/>} />
+        <Route path="*" element={<Home/>} />
       </Routes>
     </>
   );
