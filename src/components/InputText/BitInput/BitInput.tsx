@@ -8,7 +8,7 @@ interface BitTextFieldProps {
   type?: string;
 }
 
-function BitInput({
+export function BitInput({
   placeholder = "Enter text",
   value,
   onChange,
@@ -17,18 +17,16 @@ function BitInput({
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <div className={`bit-input ${isFocused ? "focused" : ""}`}>
+    <div className={`bit-field ${isFocused ? "focused" : ""}`}>
       <input
-        className="bit-input-field"
         type={type}
         value={value}
         onChange={onChange}
-        onFocus={() => setIsFocused(true)} // Cuando el campo recibe foco
-        onBlur={() => setIsFocused(false)} // Cuando el campo pierde foco
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         placeholder={placeholder}
       />
     </div>
   );
 }
-
 export default BitInput;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BitInput from "../../components/BitInput/BitInput";
+import BitInput from "../../components/InputText/BitInput/BitInput";
 import BitButton from "../../components/BitButton/BitButton";
 import "./Tutorial.css";
 import EffectText from "../../components/EffectText/EffectText";

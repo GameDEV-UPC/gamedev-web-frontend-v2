@@ -1,12 +1,13 @@
 import React from "react";
 import "@pages/log/Login.css";
-import BitTextField from "../../../components/BitInput/BitInput.tsx";
-import BitInputPassword from "../../../components/BitInputPassword/BitInputPassword.tsx";
+import BitTextField from "../../../components/InputText/BitInput/BitInput.tsx";
+import BitInputPassword from "../../../components/InputText/BitInputPassword/BitInputPassword.tsx";
 import useFormHandler from "../../../hooks/useFormHandler";
 import BitButton from "../../../components/BitButton/BitButton.tsx";
 import { User } from "../../../interfaces/User.tsx";
 import { useAuth } from "../../../hooks/AuthProvider.tsx";
 import { Navigate, useNavigate } from "react-router-dom";
+import BoxSection from "../../../components/BoxSection/BoxSection.tsx";
 
 function SignUp() {
   const { isAuthenticated, login } = useAuth();
@@ -66,7 +67,7 @@ function SignUp() {
 
   return (
     <div className="login-page">
-      <div className="login-container">
+      <BoxSection>
         <div className="login-title">
           <h2>Sign Up</h2>
         </div>
@@ -95,7 +96,7 @@ function SignUp() {
           {isLoading ? "Loading..." : "SIGN UP"}
         </BitButton>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </div>
+      </BoxSection>
     </div>
   );
 }

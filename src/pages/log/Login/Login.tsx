@@ -1,11 +1,12 @@
 import React from "react";
 import "@pages/log/Login.css";
-import BitInput from "../../../components/BitInput/BitInput.tsx";
-import BitInputPassword from "../../../components/BitInputPassword/BitInputPassword.tsx";
+import BitInput from "../../../components/InputText/BitInput/BitInput.tsx";
+import BitInputPassword from "../../../components/InputText/BitInputPassword/BitInputPassword.tsx";
 import useFormHandler from "../../../hooks/useFormHandler";
 import BitButton from "../../../components/BitButton/BitButton.tsx";
 import { useAuth } from "../../../hooks/AuthProvider.tsx";
 import { Navigate, useNavigate } from "react-router-dom";
+import BoxSection from "../../../components/BoxSection/BoxSection.tsx";
 
 function Login() {
   const { isAuthenticated, login } = useAuth();
@@ -60,7 +61,7 @@ function Login() {
 
   return (
     <div className="login-page">
-      <div className="login-container">
+      <BoxSection>
         <div className="login-title">
           <h2>LOG IN</h2>
         </div>
@@ -81,7 +82,7 @@ function Login() {
         </BitButton>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </div>
+      </BoxSection>
     </div>
   );
 }
