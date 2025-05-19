@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./About.css";
 import EffectText from "../../components/EffectText/EffectText.tsx";
+import transition from "../../hooks/transition.tsx";
 
 function About() {
   const [activeSection, setActiveSection] = useState<"engine" | "videogames">(
@@ -63,4 +64,4 @@ function About() {
   );
 }
 
-export default About;
+export default transition(About);

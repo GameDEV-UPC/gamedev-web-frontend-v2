@@ -1,5 +1,6 @@
 import "./App.css";
 import Home from "./pages/Home/Home.tsx";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   BrowserRouter as Router,
   Routes,
@@ -29,63 +30,81 @@ function App() {
     </AuthProvider>
   );
 }
+
 function MainContent() {
   const location = useLocation();
 
   function shouldShowNavbar(pathname: string) {
-    const showNavbarPaths = ["/main", "/mystats", "/about"];
+    const showNavbarPaths = [
+      "/main",
+      "/mystats",
+      "/about",
+      "/tutorial",
+      "/leave",
+    ];
     return showNavbarPaths.includes(pathname);
   }
 
   return (
     <>
       {shouldShowNavbar(location.pathname) && <Navbar />}
-      <Routes>
-        {/* Rutas públicas */}
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
 
-        {/* Rutas protegidas */}
-        <Route
-          path="/main"
-          element={
-            <ProtectedRoute>
-              <Main />
-            </ProtectedRoute>
-          }
+      {/* Cubierta de transición */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={"transition-" + location.pathname}
+          initial={{ scaleY: 1 }}
+          animate={{ scaleY: 0 }}
+          exit={{ scaleY: 1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="transition-cover"
         />
-        <Route
-          path="/mystats"
-          element={
-            <ProtectedRoute>
-              <MyStats />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <ProtectedRoute>
-              <About />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/leave"
-          element={
-            <ProtectedRoute>
-              <Leave />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/tutorial" element={<Tutorial />} />
 
-        {/* Ruta comodín */}
+        <Routes location={location} key={location.pathname}>
+          {/* Rutas públicas */}
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
 
-        <Route path="" element={<Home/>} />
-        <Route path="*" element={<Home/>} />
-      </Routes>
+          {/* Rutas protegidas */}
+          <Route
+            path="/main"
+            element={
+              <ProtectedRoute>
+                <Main />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/mystats"
+            element={
+              <ProtectedRoute>
+                <MyStats />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <ProtectedRoute>
+                <About />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/leave"
+            element={
+              <ProtectedRoute>
+                <Leave />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/tutorial" element={<Tutorial />} />
+
+          {/* Ruta comodín */}
+          <Route path="/*" element={<Home />} />
+        </Routes>
+      </AnimatePresence>
     </>
   );
 }
@@ -93,7 +112,7 @@ function MainContent() {
 function RedirectToProperPage() {
   const { isAuthenticated, loading } = useAuth();
 
-  if (loading) return null; // o un spinner opcional
+  if (loading) return null;
   console.log("isAuthenticated" + localStorage.getItem("user"));
   return isAuthenticated ? (
     <Navigate to="/main" replace />

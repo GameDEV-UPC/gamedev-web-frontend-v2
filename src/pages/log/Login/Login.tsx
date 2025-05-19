@@ -50,12 +50,12 @@ function Login() {
       console.log("Usuario logeado:", data);
 
       localStorage.setItem("user", JSON.stringify(data.user));
-      navigate("/main");
       login(data.user);
     } catch (error: any) {
       setErrorMessage(error.message || "Failed to login. Please try again.");
     } finally {
       setIsLoading(false);
+      navigate("/main");
     }
   };
 

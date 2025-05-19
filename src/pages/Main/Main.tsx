@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Main.css";
 import Leaderboard from "../../components/Leaderboard/Leaderboard.tsx";
+import transition from "../../hooks/transition.tsx";
 
 export class UserLeaderboard {
   username: string;
@@ -46,4 +47,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default transition(Main);

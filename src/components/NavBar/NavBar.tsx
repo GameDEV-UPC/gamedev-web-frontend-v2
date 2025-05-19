@@ -1,67 +1,41 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./NavBar.css";
-import AnimatedText from "../../components/AnimatedText/AnimatedText.tsx";
+import NoiseButton from "./NoiseButton.tsx";
+
+import defaultProfileIcon from "../assets/images/profile-icon-default.png";
 import EffectText from "../EffectText/EffectText.tsx";
 
 function NavBar() {
-  const [activeLink, setActiveLink] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState(1);
   const location = useLocation();
   const navigate = useNavigate();
 
   const options = [
-    { value: 0, label: "Home", path: "/main" },
-    { value: 1, label: "Canicas", path: "/tutorial" },
+    { value: "1", label: "My Stats", path: "/mystats" },
+    { value: "2", label: "Home", path: "/main" },
+    { value: "3", label: "About", path: "/about" },
+    { value: "4", label: "Marble", path: "/tutorial" },
   ];
 
   useEffect(() => {
-    const pathIndex = options.findIndex(
-      (option) => option.path === location.pathname
-    );
-    if (pathIndex !== -1) {
-      setActiveLink(pathIndex);
-    }
+    const pathMap = {
+      "/mystats": 0,
+      "/leaderboard": 1,
+      "/about": 2,
+    };
+
+    // Set active link based on path
+    setActiveLink(pathMap[location.pathname] ?? -1);
   }, [location.pathname]);
 
-  const handleNavigation = (index: number, path: string) => {
-    setActiveLink(index);
-    navigate(path);
-    setMenuOpen(false); // cerrar menú al navegar
-  };
-
   return (
-    <header className="navbar-container">
+    <header className="nav-container">
       <div className="logo">
-        <EffectText fontSize="1.6rem" pixelMode borderOffset={3.0}>
-          GAMEDEV
-        </EffectText>
+        <EffectText className="effect-text">GAMEDEV</EffectText>
       </div>
 
-      <div
-        className={`menu-toggle ${menuOpen ? "open" : ""}`}
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <nav className={`nav-options ${menuOpen ? "active" : ""}`}>
-        {options.map((option, index) => (
-          <label key={option.value} className="nav-label">
-            <input
-              type="radio"
-              name="nav"
-              value={option.value}
-              checked={activeLink === index}
-              onChange={() => handleNavigation(index, option.path)}
-              className="nav-radio"
-            />
-            <span className="nav-text">{option.label}</span>
-          </label>
-        ))}
-      </nav>
+      <NoiseButton options={options} />
     </header>
   );
 }

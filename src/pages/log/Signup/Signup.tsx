@@ -54,7 +54,7 @@ function SignUp() {
       console.log("Usuario registrado exitosamente!");
       const data = await response.json();
       localStorage.setItem("user", JSON.stringify(data.user));
-      navigate("/main");
+
       login(data.user);
     } catch (error) {
       setErrorMessage(
@@ -62,6 +62,7 @@ function SignUp() {
       );
     } finally {
       setIsLoading(false);
+      navigate("/main");
     }
   };
 

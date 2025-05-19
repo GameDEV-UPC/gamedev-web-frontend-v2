@@ -3,6 +3,7 @@ import { User } from "../../interfaces/User"; // No es necesario el .ts
 
 import { VideoGame } from "../../interfaces/Videogame";
 import EffectText from "../../components/EffectText/EffectText";
+import transition from "../../hooks/transition";
 
 // Falso Usuario para pruebas
 const fakeUser = new User(
@@ -143,4 +144,4 @@ function ProfileSection({ user }: { user: User }) {
   );
 }
 
-export default MyStats;
+export default transition(MyStats);

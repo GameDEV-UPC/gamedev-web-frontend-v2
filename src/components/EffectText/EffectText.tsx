@@ -45,7 +45,7 @@ function EffectText({
 
       return (
         <span
-          className={`effect-text-${className}`}
+          className={className ? className : "effect-text"}
           key={charIndex}
           style={{
             animationDelay: `${0.05 * charIndex}s`,

@@ -2,6 +2,7 @@ import "./Leaderboard.css";
 import { UserLeaderboard } from "../../pages/Main/Main.tsx";
 
 import EffectText from "../../components/EffectText/EffectText.tsx";
+import BoxSection from "../BoxSection/BoxSection.tsx";
 
 interface LeaderboardProps {
   users: UserLeaderboard[];
@@ -14,7 +15,7 @@ function Leaderboard({ users }: LeaderboardProps) {
   );
 
   return (
-    <div className="leaderboard-container">
+    <BoxSection>
       <div className="leaderboard-header">
         <EffectText fontSize="2.2rem" pixelMode borderOffset={3.0}>
           Leaderboard
@@ -31,7 +32,7 @@ function Leaderboard({ users }: LeaderboardProps) {
           />
         ))}
       </div>
-    </div>
+    </BoxSection>
   );
 }
 
@@ -41,15 +42,25 @@ interface LeaderboardItemProps {
 
   score: number;
 }
-
 function LeaderboardItem({ rank, username, score }: LeaderboardItemProps) {
+  let rankClass = "";
+  if (rank === 1) rankClass = "gold";
+  else if (rank === 2) rankClass = "silver";
+  else if (rank === 3) rankClass = "bronze";
+
   return (
-    <div className="leaderboard-item">
+    <BoxSection className="leaderboard-item">
       <div className="column rank-column">
-        <div className="rank">#{rank}</div>
+        <div className={`rank ${rankClass}`}>#{rank}</div>
       </div>
 
-      <div className="column avatar-column"></div>
+      <div className="column avatar-column">
+        <img
+          src="/avatar-placeholder.png"
+          alt="Avatar"
+          className="profile-pic"
+        />
+      </div>
 
       <div className="column username-column">
         <div className="username-text">{username.toUpperCase()}</div>
@@ -58,7 +69,7 @@ function LeaderboardItem({ rank, username, score }: LeaderboardItemProps) {
       <div className="column stats-column">
         <div className="stats-text">High Score: {score}</div>
       </div>
-    </div>
+    </BoxSection>
   );
 }
 

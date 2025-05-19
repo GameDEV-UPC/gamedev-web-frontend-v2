@@ -1,0 +1,120 @@
+.radio-btn-group {
+    margin: 10px;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    flex-shrink: 0; /* Asegura que los botones no se reduzcan más allá de este tamaño */
+}
+.radio-button-container {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+}
+
+/* Estilos para cuando el radio está seleccionado */
+input[type="radio"]:checked + label span {
+    color: #ff0000; /* Cambiar el texto a rojo al seleccionar */
+    text-shadow: 0 0 8px #ff0000; /* Efecto neón suave */
+}
+
+/* Estilo general del label */
+/* Estilo general del label */
+label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--text-font), sans-serif;
+    font-weight: bold;
+    font-size: 0.7rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    position: relative;
+    width: 100%; /* Igualar al tamaño del grupo */
+    height: 40px; /* Igualar al tamaño del grupo */
+    cursor: pointer;
+   
+    
+    padding: 2px;
+}
+
+/* Pseudo-elemento para crear el borde difuso */
+label::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Asegurarse de que el borde quede detrás del texto */
+    border: 1px solid white;
+}
+
+
+/* Fondo SVG dinámico aplicado al label */
+label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    background-size: 200% 200%;
+
+    z-index: -1;
+
+
+}
+
+/* SVG como decoración dentro del label */
+label svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.blue rect {
+    fill: rgb(127, 176, 237);
+    mix-blend-mode: screen;
+}
+
+.pink rect {
+    fill: rgb(255, 107, 211);
+    mix-blend-mode: screen;
+}
+
+/* Hover sobre el botón */
+label:hover {
+    transform: scale(1.1); /* Sutil aumento en el hover */
+
+}
+
+label:hover span {
+    color: #ff0077; /* Cambiar el texto a un color llamativo al hover */
+}
+
+span {
+    transition: color 350ms ease; /* Cambio de color suave */
+    z-index: 1;
+}
+
+@media (max-width: 1200px) {
+   .radio-button-container {
+        
+        gap: 0px; /* Espacio entre los botones */
+    }
+    .radio-btn-group {
+        width: 20%; /* Ajusta el ancho del grupo de botones */
+        height: 50px; /* Ajusta la altura del grupo de botones */
+    }
+}
