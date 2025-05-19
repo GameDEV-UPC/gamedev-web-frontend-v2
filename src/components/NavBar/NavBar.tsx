@@ -5,11 +5,21 @@ import NoiseButton from "./NoiseButton.tsx";
 
 import defaultProfileIcon from "../assets/images/profile-icon-default.png";
 import EffectText from "../EffectText/EffectText.tsx";
+import { useAuth } from "../../hooks/AuthProvider.tsx"; // Importar el hook useAuth
 
 function NavBar() {
   const [activeLink, setActiveLink] = useState(1);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Usar el hook useAuth para acceder al contexto de autenticación
+  const { logout, user } = useAuth();
+
+  const handleLogout = () => {
+    console.log("Logging out...");
+    logout();
+    navigate("/login");
+  };
 
   const options = [
     { value: "1", label: "My Stats", path: "/mystats" },
@@ -25,7 +35,6 @@ function NavBar() {
       "/about": 2,
     };
 
-    // Set active link based on path
     setActiveLink(pathMap[location.pathname] ?? -1);
   }, [location.pathname]);
 
@@ -36,6 +45,11 @@ function NavBar() {
       </div>
 
       <NoiseButton options={options} />
+      {user && (
+        <button className="logout-button" onClick={handleLogout}>
+          LOGOUT
+        </button>
+      )}
     </header>
   );
 }
