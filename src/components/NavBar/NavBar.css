@@ -45,22 +45,23 @@
 }
  @media (max-width: 1200px) {
    .nav-container {
+      background-color:transparent;
       flex-direction: column;
-      height: 15vh;
+      height: auto;
       justify-content: center;
       align-items: center;
       gap: 10px;
-      margin-top: 20px;
+     
 
    }
    .logo {
-      position: relative;
-      width: 100%;
-      
-      font-size: 1.5rem;
-      align-items: center;
-      justify-items: center;
-   }
+    margin-top: 20px ;
+    left: auto;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+  }
   
     
   }

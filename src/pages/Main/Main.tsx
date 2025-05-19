@@ -41,7 +41,7 @@ function Main() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="main-container">
       <Leaderboard users={users} />
     </div>
   );

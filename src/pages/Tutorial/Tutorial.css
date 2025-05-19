@@ -1,13 +1,14 @@
 .tutorial-container {
-    margin-top: 20vh;
-    background-color: black;
-    color: white;
-    padding: 2rem;
-    text-align: center;
-    justify-content: center;
+
+    margin-top: 7ch;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    font-family: 'Press Start 2P', cursive; /* Usa alguna fuente pixel si quieres */
-    
+    justify-content: flex-start; /* Evita que los elementos se centren verticalmente */
+    width: 100%;
+ 
   }
   .input-container {
     display: flex;

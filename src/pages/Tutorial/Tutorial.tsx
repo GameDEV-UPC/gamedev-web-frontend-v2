@@ -48,11 +48,11 @@ const Tutorial: React.FC = () => {
   };
 
   return (
-    <div className="container">
+    <div className="tutorial-container">
       <EffectText fontSize="1.3rem">Try It!</EffectText>
       <div className="input-container">
         <div className="color-picker">
-          <label className="color-text">Choose your color:</label>
+          <h2>Choose your color:</h2>
           <input
             type="color"
             value={color}

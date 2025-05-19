@@ -68,7 +68,7 @@ function SignUp() {
 
   return (
     <div className="login-page">
-      <BoxSection>
+      <div className="login-section">
         <div className="login-title">
           <h2>Sign Up</h2>
         </div>
@@ -97,7 +97,7 @@ function SignUp() {
           {isLoading ? "Loading..." : "SIGN UP"}
         </BitButton>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </BoxSection>
+      </div>
     </div>
   );
 }

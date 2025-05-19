@@ -2,8 +2,9 @@ import "./MyStats.css";
 import { User } from "../../interfaces/User"; // No es necesario el .ts
 
 import { VideoGame } from "../../interfaces/Videogame";
-import EffectText from "../../components/EffectText/EffectText";
+
 import transition from "../../hooks/transition";
+import BoxSection from "../../components/BoxSection/BoxSection";
 
 // Falso Usuario para pruebas
 const fakeUser = new User(
@@ -24,7 +25,7 @@ function MyStats() {
   const highestScoringGame = fakeUser.highestScoringGame();
 
   return (
-    <div className="container">
+    <div className="mystats-container">
       {/* Sección de Perfil */}
       <ProfileSection user={fakeUser} />
 
@@ -43,37 +44,24 @@ function MyStats() {
 
 function GamesSection({ games }: { games: VideoGame[] }) {
   return (
-    <div className="section">
-      <EffectText
-        className="title"
-        fontSize="1rem"
-        pixelMode
-        borderOffset={5.0}
-      >
-        Games Played
-      </EffectText>
+    <BoxSection className="section">
+      <h1>Games Played</h1>
       <div className="games-grid">
         {games.map((game: VideoGame, index: number) => {
           return (
-            <div key={index} className="game-card">
+            <BoxSection key={index} className="game-card">
               <div className="game-card-title">
-                <EffectText fontSize="0.9rem" pixelMode borderOffset={7.0}>
-                  {game.gameName}
-                </EffectText>
+                <h1>{game.gameName}</h1>
               </div>
               <div className="game-card-content">
-                <EffectText fontSize="0.5rem">
-                  Max Score: {game.maxScore}
-                </EffectText>
-                <EffectText fontSize="0.5rem">
-                  Time Played: {game.timePlayed} mins
-                </EffectText>
+                <h2>Max Score: {game.maxScore}</h2>
+                <h2>Time Played: {game.timePlayed} mins</h2>
               </div>
-            </div>
+            </BoxSection>
           );
         })}
       </div>
-    </div>
+    </BoxSection>
   );
 }
 
@@ -87,60 +75,58 @@ function StatisticsSection({
   highestScoringGame: { gameName: string; maxScore: number };
 }) {
   return (
-    <div className="section">
+    <BoxSection className="section">
       <div className="stat-header">
-        <EffectText fontSize="1rem" pixelMode borderOffset={5.0}>
-          Statistics
-        </EffectText>
+        <h1>Statistics</h1>
       </div>
-      <div className="stat-item">
-        <EffectText fontSize="0.8rem">Total Play Time:</EffectText>
-        <EffectText fontSize="0.8rem">{totalPlayTime} mins</EffectText>
+      <div className="stat-content">
+        <BoxSection className="stat-item">
+          <h2>Total Play Time:</h2>
+          <h2>{totalPlayTime} mins</h2>
+        </BoxSection>
+        <BoxSection className="stat-item">
+          <h2>Total Score:</h2>
+          <h2>{totalScore}</h2>
+        </BoxSection>
+        <BoxSection className="stat-item">
+          <h2>Highest Scoring Game:</h2>
+          <h2>
+            {highestScoringGame.gameName} ({highestScoringGame.maxScore} points)
+          </h2>
+        </BoxSection>
       </div>
-      <div className="stat-item">
-        <EffectText fontSize="0.8rem">Total Score:</EffectText>
-        <EffectText fontSize="0.8rem">{totalScore}</EffectText>
-      </div>
-      <div className="stat-item">
-        <EffectText fontSize="0.8rem">Highest Scoring Game:</EffectText>
-        <EffectText fontSize="0.8rem">
-          {highestScoringGame.gameName} ({highestScoringGame.maxScore} points)
-        </EffectText>
-      </div>
-    </div>
+    </BoxSection>
   );
 }
 
 function ProfileSection({ user }: { user: User }) {
+  const src = `https://cataas.com/cat/says/${encodeURIComponent(
+    user.username
+  )}?fontSize=100&fontColor=white&unique=${Date.now() + Math.random()}`;
   return (
-    <div className="section">
+    <BoxSection className="section">
+      <h1>{user.username}</h1>
       <img
-        src={user.profilePicture}
+        src={src}
         alt={`Profile of ${user.username}`}
         className="profile-picture"
       />
-      <div className="profile-text">
-        <div className="profile-user">
-          <EffectText fontSize="1rem" pixelMode borderOffset={5.0}>
-            {user.username}
-          </EffectText>
-        </div>
-        <div className="info-container">
-          <div className="info">
-            <EffectText fontSize="0.8rem">First Name:</EffectText>
-            <EffectText fontSize="0.8rem">{`${user.firstName}`}</EffectText>
-          </div>
-          <div className="info">
-            <EffectText fontSize="0.8rem">Last Name:</EffectText>
-            <EffectText fontSize="0.8rem">{` ${user.lastName}`}</EffectText>
-          </div>
-          <div className="info">
-            <EffectText fontSize="0.8rem">Email:</EffectText>
-            <EffectText fontSize="0.8rem">{`${user.email}`}</EffectText>
-          </div>
-        </div>
+
+      <div className="info-container">
+        <BoxSection>
+          <h2>First Name:</h2>
+          <h2>{`${user.firstName}`}</h2>
+        </BoxSection>
+        <BoxSection>
+          <h2>Last Name:</h2>
+          <h2>{` ${user.lastName}`}</h2>
+        </BoxSection>
+        <BoxSection>
+          <h2>Email:</h2>
+          <h2>{`${user.email}`}</h2>
+        </BoxSection>
       </div>
-    </div>
+    </BoxSection>
   );
 }
 

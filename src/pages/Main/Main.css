@@ -1,5 +1,5 @@
-.container {
-    max-height: 80vh; /* Ajusta según necesidad */
+.main-container {
+    margin-top: 5ch;
     overflow-y: hidden;
     overflow-x: hidden;
     display: flex;
@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: flex-start; /* Evita que los elementos se centren verticalmente */
     width: 100%;
-    margin-top: 15vh;
-    box-sizing: border-box;
+  
+   
 }
 

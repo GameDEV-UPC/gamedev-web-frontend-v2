@@ -2,9 +2,7 @@
   width: 95%;
   padding: 25px;
   margin: 20px auto;
-  background: #000;
-  border: 3px solid #fff;
-  box-shadow: 0 0 10px #0f0, 0 0 20px #0f0 inset;
+
   text-align: center;
   font-family: "Press Start 2P";
   color: #fff;
@@ -14,134 +12,114 @@
   font-size: 2rem;
   color: #0f0;
   text-shadow: 0 0 8px #0f0;
-  margin-bottom: 25px;
+  margin-bottom: 55px;
 }
 
 .leaderboard {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px;
+  margin: auto 0;
+  
 }
 .box-section {
-  box-shadow: 0 0 16px #0ff, 0 0 32px #ea36af, inset 0 0 8px #75fa69;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  padding: 40px;
-  background: #000;
-}
-
-/* Solo para contenedores generales */
-.box-section.container {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  flex-direction: row !important;
   align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Para leaderboard items sin límite de ancho y sin padding extra */
-.box-section.leaderboard-item {
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
-  padding: 15px;
+  gap: 0px;
+  padding: 15px !important;
   margin: 0;
   box-shadow: 0 0 8px #fff;
   border: 2px solid #fff;
   transition: all 0.2s ease;
+  justify-content: space-around;
 }
 
-.box-section.leaderboard-item:hover {
+.box-section:hover {
   box-shadow: 0 0 15px #0ff, 0 0 30px #0ff inset;
 }
 
 
-.rank-column, .avatar-column, .username-column, .stats-column {
-  display: flex;
-  align-items: center;
-}
-
-.rank-column {
-  flex: 0 0 50px;
-  justify-content: center;
-}
-
 .rank {
   font-size: 18px;
   font-weight: bold;
-  text-shadow: 0 0 8px #ff0;
+  width: 10%;
+  
 }
-
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+   box-shadow: 0 0 16px #0ff, 0 0 32px #ea36af, inset 0 0 8px #75fa69;
+    border-radius: 10px;
+}
 .rank.gold { color: #FFD700; }
 .rank.silver { color: #C0C0C0; }
 .rank.bronze { color: #CD7F32; }
 
-.avatar-column {
-  flex: 0 0 60px;
+.stats-container {
+  display: flex;
+  flex-direction: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-left: 20px;
 }
-
-.profile-pic {
-  width: 50px;
-  height: 50px;
-  border: 2px solid #fff;
-  border-radius: 4px;
-}
-
-.username-column {
-  flex: 1;
-}
-
-.username-text {
+.username-text{
   font-size: 1rem;
-  color: #0ff;
+  color: #fff;
+  margin-left: 10px;
 }
-
-.stats-column {
-  flex: 0 0 auto;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.stats-text {
+.stats-text{
   font-size: 1rem;
-  color: #ccc;
+  color: #fff;
+  margin-left: 10px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .leaderboard-item {
-    flex-wrap: wrap;
+  .rank{
+    font-size: 0.7rem;
+    width: 20%;
   }
-
-  .stats-column {
-    align-items: flex-start;
-    flex: 1 1 100%;
-  }
-
-  .stats-text {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .leaderboard-header {
-    font-size: 1.4rem;
-  }
-
-  .leaderboard-item {
+  .stats-container {
     flex-direction: column;
-    padding: 12px;
+    align-items: center;
+    
   }
-
-  .rank-column, .avatar-column, .username-column, .stats-column {
-    width: 100%;
-    justify-content: flex-start;
+  .username-text{
+  font-size: 0.7rem;
+  color: #fff;
+  margin-left: 10px;
+}
+.stats-text{
+  font-size: 0.7rem;
+  color: #fff;
+  margin-left: 10px;
+}
+}
+@media (max-width: 400px) {
+  .rank{
+    font-size: 0.5rem;
+    width: 20%;
   }
-
-  .rank {
-    font-size: 16px;
+  .stats-container {
+    flex-direction: column;
+    align-items: center;
+    
   }
-
-  .username-text, .stats-text {
-    font-size: 0.85rem;
-  }
+  .username-text{
+  font-size: 0.5rem;
+  color: #fff;
+  margin-left: 10px;
+}
+.stats-text{
+  font-size: 0.5rem;
+  color: #fff;
+  margin-left: 10px;
+}
 }

@@ -1,48 +1,77 @@
 /* General Layout */
-.container {
+.mystats-container {
     padding: 20px;
-
-    margin: auto;
-
+    display: flex;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 6vh;
+    width: 100%;
+    gap: 20px;
   }
   
   .section {
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 80px 0; 
+    margin: 6vh 0;
+    
     background-color: transparent !important;
+    width: 80% !important;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    gap: 50px;
+    
+   
   }
   
   /* Profile */
   
-  .profile-picture {
-    width: 120px;
-    height: 120px;
-    border: 3px solid #fff;
-    box-shadow: 4px 4px 0 #fff;
-    object-fit: cover;
-    margin: 0 auto 30px auto;
-    display: block;
-    transition: all 0.2s;
-  }
+.profile-picture {
+  align-self: center;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+   box-shadow: 0 0 16px #0ff, 0 0 32px #ea36af, inset 0 0 8px #75fa69;
+    border-radius: 10px;
+}
+  
   
   .profile-text {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 60%;
   }
   
   .profile-user {
     text-transform: uppercase;
     margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    width: 100%;
+
+ 
+  }
+  .effect-text{
+    font-size: 1rem !important;
   }
   
+  
   .info-container {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
-    width: 100%;
-    max-width: 550px;
-    margin: 0 auto;
+    width: 60%;
+    margin: 20px;
+    justify-content: center;
+    
     background-color: transparent !important;
   
   }
@@ -65,14 +94,22 @@
   /* Statistics */
   
   .stat-header {
-    text-align: center;
+    text-transform: uppercase;
     margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
   }
   
   .stats-section {
     margin-top: 30px;
   }
+  .stat-content{
   
+    width: 60%;
+    margin: 0 auto;
+  }
   .stat-item {
     background-color: transparent !important;
   
@@ -96,14 +133,14 @@
   
   .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
     margin-top: 20px;
   }
-  
+
   .game-card {
     background-color: transparent !important;
-  
+    width: 100%;
     border: 3px solid #fff;
     box-shadow: 4px 4px 0 #fff;
     padding: 16px;
@@ -123,6 +160,11 @@
   .game-card-content {
     text-align: left;
     margin-top: 10px;
+    height: 100px;
+    flex-direction: column !important;
+    display: flex !important;
+   
+    
   }
   
   .game-image {
@@ -140,23 +182,47 @@
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0 #fff;
   }
-  
+  h1{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  h2{
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+  }
   /* Responsive adjustments */
   
-  @media (max-width: 600px) {
-    .profile-picture {
-      width: 100px;
-      height: 100px;
+  @media (max-width: 800px) {
+    .section{
+      width: 100% !important;
+      
     }
-  
-    .stat-item {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .info {
-      flex-direction: column;
-      text-align: center;
-    }
+        h1{
+          font-size: 1rem;
+        }
+        h2{
+          font-size: 0.6rem;
+        }
+        .info-container{
+          width: 80% !important;
+          margin: 0 auto;
+        }
+        .info-container .box-section{
+          display: flex;
+          flex-direction: column !important;
+          align-items: center;
+          gap: 0px;
+          h2{
+            font-size: 0.7rem;
+          }
+        }
+        .games-grid{
+          grid-template-columns: repeat(1, 1fr);
+        }
+        
   }
   

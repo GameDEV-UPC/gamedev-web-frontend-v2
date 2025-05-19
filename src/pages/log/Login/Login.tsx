@@ -1,5 +1,5 @@
 import React from "react";
-import "@pages/log/Login.css";
+import "../Login.css";
 import BitInput from "../../../components/InputText/BitInput/BitInput.tsx";
 import BitInputPassword from "../../../components/InputText/BitInputPassword/BitInputPassword.tsx";
 import useFormHandler from "../../../hooks/useFormHandler";
@@ -61,7 +61,7 @@ function Login() {
 
   return (
     <div className="login-page">
-      <BoxSection>
+      <div className="login-section">
         <div className="login-title">
           <h2>LOG IN</h2>
         </div>
@@ -78,11 +78,11 @@ function Login() {
         />
 
         <BitButton onClick={handleLogin}>
-          {isLoading ? "Loading..." : "LOG IN"}
+          {isLoading ? "Loading..." : "ACCEPT"}
         </BitButton>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </BoxSection>
+      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@ function Home() {
   const handleNavigate = (path: string) => navigate(path);
 
   return (
-    <div className="container">
+    <div className="home-container">
       {/* Presentación principal */}
       <div className="presentation-container">
         <div className="presentation-title">

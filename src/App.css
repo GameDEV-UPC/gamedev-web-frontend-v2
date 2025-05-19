@@ -39,13 +39,13 @@ h1{
     .app-container {
         padding-bottom: 20px;
         margin-bottom: 20px;
-        height: 80vh;
+        
     }
   }
   .app-container {
     padding-bottom: 20px;
     margin-bottom: 20px;
-    height: 80vh;
+    
 }
 
 
@@ -113,6 +113,7 @@ p{
     }
   }
   body::before {
+    overflow: auto;
     content: "";
     position: fixed;
     top: 0;
@@ -199,4 +200,13 @@ p{
         #111 4px
       );
     animation: scanlines 0.05s linear infinite;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #111;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #75fa69;
+  border-radius: 4px;
+  border: #ea36af 2px solid;
 }
