@@ -3,7 +3,6 @@ import { User } from "../../interfaces/User"; // No es necesario el .ts
 
 import { VideoGame } from "../../interfaces/Videogame";
 
-import transition from "../../hooks/transition";
 import BoxSection from "../../components/BoxSection/BoxSection";
 import { useAuth } from "../../hooks/AuthProvider";
 // Falso Usuario para pruebas
@@ -121,4 +120,4 @@ function ProfileSection({ user }: { user: User }) {
   );
 }
 
-export default transition(MyStats);
+export default MyStats;

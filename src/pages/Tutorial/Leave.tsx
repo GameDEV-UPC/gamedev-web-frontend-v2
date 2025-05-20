@@ -4,7 +4,6 @@ import "./Tutorial.css";
 import BitButton from "../../components/BitButton/BitButton";
 import { useAuth } from "../../hooks/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import transition from "../../hooks/transition";
 const Leave: React.FC = () => {
   const { user } = useAuth(); // Obtén el usuario logueado desde el contexto
   const navigate = useNavigate();
@@ -50,4 +49,4 @@ const Leave: React.FC = () => {
   );
 };
 
-export default transition(Leave);
+export default Leave;

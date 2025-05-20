@@ -1,64 +1,73 @@
-import { motion } from "framer-motion";
-import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import "./transition.css";
+export const PageTransitionContext = React.createContext<{
+  startTransition: (path: string) => void;
+} | null>(null);
 
-const transition = (OgComponent: React.ComponentType<any>) => {
-  const textStyle: React.CSSProperties = {
-    color: "#fff",
-    fontSize: "5rem",
-    fontWeight: 900,
-    letterSpacing: "0.2em",
-    userSelect: "none",
-    fontFamily: "Press Start 2P",
-    textTransform: "uppercase",
+export function PageTransitionProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [nextPath, setNextPath] = useState<string | null>(null);
+  const [showText, setShowText] = useState(false);
+
+  // Para controlar navegación luego de animación
+  useEffect(() => {
+    if (!isAnimating) return;
+
+    // Cuando cortina baja, navegamos
+    if (nextPath) {
+      setTimeout(() => {
+        window.history.pushState({}, "", nextPath);
+        setShowText(true);
+        setTimeout(() => {
+          setIsAnimating(false);
+          setNextPath(null);
+        }, 300); // Duración animación subida
+      }, 300); // Duración animación bajada
+    }
+  }, [isAnimating, nextPath]);
+
+  const startTransition = (path: string) => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setShowText(true);
+    setNextPath(path);
   };
 
-  const containerStyle: React.CSSProperties = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100vw",
-    height: "100vh",
-    backgroundColor: "#000",
-    transformOrigin: "top",
-    zIndex: 9999,
-    pointerEvents: "none",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
+  return (
+    <PageTransitionContext.Provider value={{ startTransition }}>
+      <AnimatePresence>
+        {isAnimating && (
+          <motion.div
+            className="transition-container"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            exit={{ scaleY: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
 
-  const containerStyleSlideOut = {
-    ...containerStyle,
-    transformOrigin: "bottom",
-  };
-
-  return (props: any) => (
-    <>
-      <motion.div
-        className="slide-in"
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0 }}
-        exit={{ scaleY: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        style={containerStyle}
-      >
-        <h2 style={textStyle}>GAMEDEV</h2>
-      </motion.div>
-
-      <OgComponent {...props} />
-
-      <motion.div
-        className="slide-out"
-        initial={{ scaleY: 0 }}
-        animate={{ scaleY: 0 }}
-        exit={{ scaleY: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        style={containerStyleSlideOut}
-      >
-        <h2 style={textStyle}>GAMEDEV</h2>
-      </motion.div>
-    </>
+              transformOrigin: "top",
+              zIndex: 9999,
+              pointerEvents: "none",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {showText && <h2 className="transition-text">GAMEDEV</h2>}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {children}
+    </PageTransitionContext.Provider>
   );
-};
-
-export default transition;
+}

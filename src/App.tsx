@@ -1,14 +1,13 @@
 import "./App.css";
 import Home from "./pages/Home/Home.tsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
-  Navigate,
 } from "react-router-dom";
-import { AuthProvider, useAuth } from "./hooks/AuthProvider.tsx";
+import { AuthProvider } from "./hooks/AuthProvider.tsx";
 import { ProtectedRoute } from "./hooks/ProtectedRoute.tsx";
 import Navbar from "./components/NavBar/NavBar.tsx";
 import MyStats from "./pages/MyStats/MyStats.tsx";
@@ -18,14 +17,18 @@ import SignUp from "./pages/log/Signup/Signup.tsx";
 import Main from "./pages/Main/Main.tsx";
 import Tutorial from "./pages/Tutorial/Tutorial.tsx";
 import Leave from "./pages/Tutorial/Leave.tsx";
+import RedirectToProperPage from "./hooks/Redirect.tsx";
+import { PageTransitionProvider } from "./hooks/transition.tsx";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="app-container">
-          <MainContent />
-        </div>
+        <PageTransitionProvider>
+          <div className="app-container">
+            <MainContent />
+          </div>
+        </PageTransitionProvider>
       </Router>
     </AuthProvider>
   );
@@ -34,33 +37,28 @@ function App() {
 function MainContent() {
   const location = useLocation();
 
-  function shouldShowNavbar(pathname: string) {
-    const showNavbarPaths = [
-      "/main",
-      "/mystats",
-      "/about",
-      "/tutorial",
-      "/leave",
-    ];
-    return showNavbarPaths.includes(pathname);
-  }
+  const showNavbarPaths = [
+    "/main",
+    "/mystats",
+    "/about",
+    "/tutorial",
+    "/leave",
+  ];
 
   return (
     <>
-      {shouldShowNavbar(location.pathname) && <Navbar />}
+      {showNavbarPaths.includes(location.pathname) && <Navbar />}
 
-      <AnimatePresence mode="wait" initial={false}>
-        {/* Cubierta de transición con texto */}
-
-        {/* Rutas */}
+      <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          {/* Redirección en raíz */}
+          {/* Ruta raíz redirige según estado auth */}
           <Route path="/" element={<RedirectToProperPage />} />
 
           {/* Rutas públicas */}
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/tutorial" element={<Tutorial />} />
 
           {/* Rutas protegidas */}
           <Route
@@ -95,25 +93,12 @@ function MainContent() {
               </ProtectedRoute>
             }
           />
-          <Route path="/tutorial" element={<Tutorial />} />
 
-          {/* Ruta comodín */}
+          {/* Cualquier ruta no definida redirige según estado */}
           <Route path="/*" element={<RedirectToProperPage />} />
         </Routes>
       </AnimatePresence>
     </>
-  );
-}
-
-function RedirectToProperPage() {
-  const { isAuthenticated, loading } = useAuth();
-
-  if (loading) return null;
-
-  return isAuthenticated ? (
-    <Navigate to="/main" replace />
-  ) : (
-    <Navigate to="/home" replace />
   );
 }
 

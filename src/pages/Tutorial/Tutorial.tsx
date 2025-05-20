@@ -5,7 +5,6 @@ import "./Tutorial.css";
 import EffectText from "../../components/EffectText/EffectText";
 import { useAuth } from "../../hooks/AuthProvider"; // Importa el hook useAuth
 import { useNavigate } from "react-router-dom";
-import transition from "../../hooks/transition";
 
 const Tutorial: React.FC = () => {
   const { user } = useAuth(); // Obtén el usuario logueado desde el contexto
@@ -66,4 +65,4 @@ const Tutorial: React.FC = () => {
   );
 };
 
-export default transition(Tutorial);
+export default Tutorial;

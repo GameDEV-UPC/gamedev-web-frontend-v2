@@ -4,9 +4,10 @@ import "./BitButton.css";
 interface ButtonProps {
   children: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
-function BitButton({ children, onClick }: ButtonProps) {
+function BitButton({ children, onClick, disabled = false }: ButtonProps) {
   const [animatedText, setAnimatedText] = useState(children);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -51,6 +52,7 @@ function BitButton({ children, onClick }: ButtonProps) {
       className="bit-button"
       onClick={handleClick}
       onMouseEnter={animateText}
+      disabled={disabled}
     >
       <h1 className="bit-button-text">{animatedText}</h1>
     </button>

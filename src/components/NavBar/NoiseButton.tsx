@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useRef, useState, useContext } from "react";
+import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import gsap from "gsap";
+import { PageTransitionContext } from "../../hooks/transition"; // Ajusta ruta
 import "./NoiseButton.css";
+import { nav } from "framer-motion/client";
 
 interface Option {
   value: string;
@@ -14,8 +16,8 @@ interface NoiseButtonProps {
 }
 
 function NoiseButton({ options }: NoiseButtonProps) {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const containerRef = useRef<HTMLDivElement>(null);
   const previousRadioRef = useRef<HTMLInputElement | null>(null);
 
@@ -25,6 +27,9 @@ function NoiseButton({ options }: NoiseButtonProps) {
     );
     return currentOption ? currentOption.value : options[0].value;
   });
+
+  // Obtén la función para iniciar transición de página
+  const pageTransition = useContext(PageTransitionContext);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -83,7 +88,18 @@ function NoiseButton({ options }: NoiseButtonProps) {
 
   const handleOptionChange = (value: string, path: string) => {
     setSelectedValue(value);
-    navigate(path);
+
+    if (pageTransition) {
+      // Inicia animación y navegación al terminar
+      pageTransition.startTransition(path);
+      setTimeout(() => {
+        navigate(path);
+      }, 600); // Duración de la animación
+    } else {
+      // fallback: navega directo
+      navigate(path); // Asegúrate de tener acceso a navigate
+      // O usa un navigate si tienes acceso
+    }
   };
 
   return (

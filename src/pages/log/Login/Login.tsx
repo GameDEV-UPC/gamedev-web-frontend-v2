@@ -5,15 +5,14 @@ import BitInputPassword from "../../../components/InputText/BitInputPassword/Bit
 import useFormHandler from "../../../hooks/useFormHandler";
 import BitButton from "../../../components/BitButton/BitButton";
 import { useAuth } from "../../../hooks/AuthProvider";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { User } from "../../../interfaces/User";
-import transition from "../../../hooks/transition";
 
 function Login() {
   const { isAuthenticated, login } = useAuth();
-  const navigate = useNavigate();
 
   if (isAuthenticated) {
+    // Si ya está autenticado, redirige al main
     return <Navigate to="/main" replace />;
   }
 
@@ -50,18 +49,17 @@ function Login() {
 
       const data = await response.json();
 
-      // 🔥 Crear User desde respuesta API
+      // Crear usuario desde la respuesta API
       const user = User.fromApiResponse(data.user);
 
-      // Guardar en context y localStorage
+      // Guardar en contexto y localStorage
       login(user);
 
-      // Redirigir al main
+      // No es necesario navegar aquí, RedirectToProperPage manejará la redirección
     } catch (error: any) {
       setErrorMessage(error.message || "Failed to login. Please try again.");
     } finally {
       setIsLoading(false);
-      navigate("/main");
     }
   };
 
@@ -81,7 +79,7 @@ function Login() {
           onChange={(e) => handleChange("password", e.target.value)}
         />
 
-        <BitButton onClick={handleLogin}>
+        <BitButton onClick={handleLogin} disabled={isLoading}>
           {isLoading ? "Loading..." : "ACCEPT"}
         </BitButton>
 
@@ -91,4 +89,4 @@ function Login() {
   );
 }
 
-export default transition(Login);
+export default Login;

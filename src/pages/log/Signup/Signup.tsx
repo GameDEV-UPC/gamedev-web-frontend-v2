@@ -4,17 +4,16 @@ import BitTextField from "../../../components/InputText/BitInput/BitInput.tsx";
 import BitInputPassword from "../../../components/InputText/BitInputPassword/BitInputPassword.tsx";
 import useFormHandler from "../../../hooks/useFormHandler";
 import BitButton from "../../../components/BitButton/BitButton.tsx";
-import { User } from "../../../interfaces/User.tsx";
 import { useAuth } from "../../../hooks/AuthProvider.tsx";
-import { Navigate, useNavigate } from "react-router-dom";
-import BoxSection from "../../../components/BoxSection/BoxSection.tsx";
+import { Navigate } from "react-router-dom";
 
 function SignUp() {
   const { isAuthenticated, login } = useAuth();
-  const navigate = useNavigate();
+
   if (isAuthenticated) {
     return <Navigate to="/main" replace />;
   }
+
   const {
     values,
     errorMessage,
@@ -30,7 +29,6 @@ function SignUp() {
   });
 
   const handleRegister = async () => {
-    console.log("Registrando usuario...");
     setErrorMessage(null);
     setIsLoading(true);
 
@@ -51,18 +49,18 @@ function SignUp() {
         throw new Error(errorData.detail || "Registration failed");
       }
 
-      console.log("Usuario registrado exitosamente!");
       const data = await response.json();
-      localStorage.setItem("user", JSON.stringify(data.user));
 
+      // Usar login del contexto con el usuario recibido
       login(data.user);
-    } catch (error) {
+
+      // No navegar manualmente, RedirectToProperPage lo hará
+    } catch (error: any) {
       setErrorMessage(
         error.message || "Failed to register user. Please try again."
       );
     } finally {
       setIsLoading(false);
-      navigate("/main");
     }
   };
 
@@ -92,7 +90,7 @@ function SignUp() {
           onChange={(e) => handleChange("password", e.target.value)}
         />
 
-        <BitButton onClick={handleRegister}>
+        <BitButton onClick={handleRegister} disabled={isLoading}>
           {isLoading ? "Loading..." : "SIGN UP"}
         </BitButton>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
