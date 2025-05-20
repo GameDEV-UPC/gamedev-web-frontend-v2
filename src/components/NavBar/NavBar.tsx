@@ -6,6 +6,7 @@ import NoiseButton from "./NoiseButton.tsx";
 import defaultProfileIcon from "../assets/images/profile-icon-default.png";
 import EffectText from "../EffectText/EffectText.tsx";
 import { useAuth } from "../../hooks/AuthProvider.tsx"; // Importar el hook useAuth
+import BitButton from "../BitButton/BitButton.tsx";
 
 function NavBar() {
   const [activeLink, setActiveLink] = useState(1);
@@ -24,7 +25,7 @@ function NavBar() {
   const options = [
     { value: "1", label: "My Stats", path: "/mystats" },
     { value: "2", label: "Home", path: "/main" },
-    { value: "3", label: "About", path: "/about" },
+
     { value: "4", label: "Marble", path: "/tutorial" },
   ];
 
@@ -45,11 +46,11 @@ function NavBar() {
       </div>
 
       <NoiseButton options={options} />
-      {user && (
+      {
         <button className="logout-button" onClick={handleLogout}>
           LOGOUT
         </button>
-      )}
+      }
     </header>
   );
 }

@@ -1,15 +1,16 @@
-import {
+import React, {
   createContext,
   useContext,
   useState,
   useEffect,
   ReactNode,
 } from "react";
+import { User } from "../interfaces/User";
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  user: any;
-  login: (userData: any) => void;
+  user: User | null;
+  login: (userData: User) => void;
   logout: () => void;
   loading: boolean;
 }
@@ -18,19 +19,21 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Revisar si ya hay un usuario guardado (al recargar)
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const parsedData = JSON.parse(storedUser);
+      const restoredUser = User.fromApiResponse(parsedData);
+      setUser(restoredUser);
       setIsAuthenticated(true);
     }
+    setLoading(false);
   }, []);
 
-  const login = (userData: any) => {
+  const login = (userData: User) => {
     localStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
     setIsAuthenticated(true);
@@ -53,6 +56,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (!context) throw new Error("useAuth must be used within an AuthProvider");
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
   return context;
 }

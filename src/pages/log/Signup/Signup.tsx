@@ -69,9 +69,8 @@ function SignUp() {
   return (
     <div className="login-page">
       <div className="login-section">
-        <div className="login-title">
-          <h2>Sign Up</h2>
-        </div>
+        <h2 className="login-title">Sign Up</h2>
+
         <BitTextField
           placeholder="Enter your full name"
           value={values.fullName}

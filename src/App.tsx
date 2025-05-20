@@ -49,18 +49,14 @@ function MainContent() {
     <>
       {shouldShowNavbar(location.pathname) && <Navbar />}
 
-      {/* Cubierta de transición */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={"transition-" + location.pathname}
-          initial={{ scaleY: 1 }}
-          animate={{ scaleY: 0 }}
-          exit={{ scaleY: 1 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="transition-cover"
-        />
+      <AnimatePresence mode="wait" initial={false}>
+        {/* Cubierta de transición con texto */}
 
+        {/* Rutas */}
         <Routes location={location} key={location.pathname}>
+          {/* Redirección en raíz */}
+          <Route path="/" element={<RedirectToProperPage />} />
+
           {/* Rutas públicas */}
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -102,7 +98,7 @@ function MainContent() {
           <Route path="/tutorial" element={<Tutorial />} />
 
           {/* Ruta comodín */}
-          <Route path="/*" element={<Home />} />
+          <Route path="/*" element={<RedirectToProperPage />} />
         </Routes>
       </AnimatePresence>
     </>
@@ -113,7 +109,7 @@ function RedirectToProperPage() {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) return null;
-  console.log("isAuthenticated" + localStorage.getItem("user"));
+
   return isAuthenticated ? (
     <Navigate to="/main" replace />
   ) : (

@@ -1,19 +1,22 @@
 import React from "react";
 import "../Login.css";
-import BitInput from "../../../components/InputText/BitInput/BitInput.tsx";
-import BitInputPassword from "../../../components/InputText/BitInputPassword/BitInputPassword.tsx";
+import BitInput from "../../../components/InputText/BitInput/BitInput";
+import BitInputPassword from "../../../components/InputText/BitInputPassword/BitInputPassword";
 import useFormHandler from "../../../hooks/useFormHandler";
-import BitButton from "../../../components/BitButton/BitButton.tsx";
-import { useAuth } from "../../../hooks/AuthProvider.tsx";
+import BitButton from "../../../components/BitButton/BitButton";
+import { useAuth } from "../../../hooks/AuthProvider";
 import { Navigate, useNavigate } from "react-router-dom";
-import BoxSection from "../../../components/BoxSection/BoxSection.tsx";
+import { User } from "../../../interfaces/User";
+import transition from "../../../hooks/transition";
 
 function Login() {
   const { isAuthenticated, login } = useAuth();
   const navigate = useNavigate();
+
   if (isAuthenticated) {
     return <Navigate to="/main" replace />;
   }
+
   const {
     values,
     errorMessage,
@@ -27,7 +30,6 @@ function Login() {
   });
 
   const handleLogin = async () => {
-    console.log("Iniciando sesión...");
     setErrorMessage(null);
     setIsLoading(true);
 
@@ -47,10 +49,14 @@ function Login() {
       }
 
       const data = await response.json();
-      console.log("Usuario logeado:", data);
 
-      localStorage.setItem("user", JSON.stringify(data.user));
-      login(data.user);
+      // 🔥 Crear User desde respuesta API
+      const user = User.fromApiResponse(data.user);
+
+      // Guardar en context y localStorage
+      login(user);
+
+      // Redirigir al main
     } catch (error: any) {
       setErrorMessage(error.message || "Failed to login. Please try again.");
     } finally {
@@ -62,9 +68,7 @@ function Login() {
   return (
     <div className="login-page">
       <div className="login-section">
-        <div className="login-title">
-          <h2>LOG IN</h2>
-        </div>
+        <h2 className="login-title">LOG IN</h2>
 
         <BitInput
           placeholder="Enter your email"
@@ -87,4 +91,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default transition(Login);

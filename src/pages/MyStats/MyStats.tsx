@@ -5,39 +5,30 @@ import { VideoGame } from "../../interfaces/Videogame";
 
 import transition from "../../hooks/transition";
 import BoxSection from "../../components/BoxSection/BoxSection";
-
+import { useAuth } from "../../hooks/AuthProvider";
 // Falso Usuario para pruebas
-const fakeUser = new User(
-  "janedoe",
-  "Jane",
-  "Doe",
-  "janedoe@example.com",
-  "https://placehold.co/150x150",
-  [
-    new VideoGame("Chess", 1400, 200),
-    new VideoGame("Sudoku", 1100, 80),
-    new VideoGame("Tetris", 1300, 100),
-  ]
-);
-
 function MyStats() {
+  const { user } = useAuth();
+  console.log(user);
   // Evitamos llamadas repetidas
-  const highestScoringGame = fakeUser.highestScoringGame();
-
+  if (!user) {
+    return null;
+  }
+  const current_user = user as User;
   return (
     <div className="mystats-container">
       {/* Sección de Perfil */}
-      <ProfileSection user={fakeUser} />
+      <ProfileSection user={current_user} />
 
       {/* Sección de Estadísticas */}
       <StatisticsSection
-        totalPlayTime={fakeUser.totalPlayTime()}
-        totalScore={fakeUser.total_score} // Cambié a total_score
-        highestScoringGame={highestScoringGame}
+        totalPlayTime={current_user.totalPlayTime()}
+        totalScore={current_user.total_score} // Cambié a total_score
+        highestScoringGame={user.highestScoringGame()}
       />
 
       {/* Sección de Juegos */}
-      <GamesSection games={fakeUser.gamesPlayed} />
+      <GamesSection games={current_user.gamesPlayed} />
     </div>
   );
 }
