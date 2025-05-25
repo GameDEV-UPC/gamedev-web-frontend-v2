@@ -42,15 +42,15 @@ function NavBar() {
   return (
     <header className="nav-container">
       <div className="logo">
-        <EffectText className="effect-text">GAMEDEV</EffectText>
+        <h1>GAMEDEV</h1>
       </div>
 
       <NoiseButton options={options} />
-      {
-        <button className="logout-button" onClick={handleLogout}>
+
+        <BitButton className={"logout-button"} onClick={handleLogout}>
           LOGOUT
-        </button>
-      }
+        </BitButton>
+
     </header>
   );
 }

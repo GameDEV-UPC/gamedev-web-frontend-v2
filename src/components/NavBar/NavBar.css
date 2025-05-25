@@ -1,36 +1,50 @@
 
 .nav-container {
+    position: relative;
     display: flex;
+    justify-content: center; /* centra el contenido horizontalmente */
     align-items: center;
-    justify-content: space-between;
     padding: 0.8rem 2rem;
     background-color: var(--color-bg);
-    box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .logo {
+    position: absolute;
+    left: 2rem;
     font-family: var(--font-main);
-    font-weight: 700;
-    font-size: 1.8rem;
+    font-weight: 600;
+    font-size: 1rem;
     color: var(--color-primary);
 }
 
 .logout-button {
+
+
+    position: absolute;
+    right: 5rem;
     background-color: var(--color-primary);
     color: var(--color-bg);
     border: none;
     padding: 0.5rem 1.3rem;
     border-radius: var(--radius);
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 600;
     transition: background-color 0.3s ease;
     user-select: none;
 }
 
+.radio-button-container {
+    display: flex;
+    gap: 1.3rem;
+    justify-content: center;
+    align-items: center;
+}
+
 .logout-button:hover {
+
     background-color: var(--color-secondary);
     color: var(--color-bg);
 }

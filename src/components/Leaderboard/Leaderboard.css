@@ -42,7 +42,12 @@
 .rank.bronze {
   color: #cd7f32;
 }
+.box-section {
+  width: 500px;
+  padding: 20rem;
 
+
+}
 /* Image styling */
 .profile-pic {
   height: 48px;

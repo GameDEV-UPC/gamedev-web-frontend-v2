@@ -5,14 +5,14 @@ interface ButtonProps {
   children: string;
   onClick?: () => void;
   disabled?: boolean;
+  className?: string; // ✅ Añadido
 }
 
-function BitButton({ children, onClick, disabled = false }: ButtonProps) {
+function BitButton({ children, onClick, disabled = false, className = "" }: ButtonProps) {
   const [animatedText, setAnimatedText] = useState(children);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
   const animateText = () => {
     if (isAnimating) return;
@@ -21,18 +21,15 @@ function BitButton({ children, onClick, disabled = false }: ButtonProps) {
     const originalText = children.split("");
     const animationFrames = 15;
     const interval = 30;
-
     let frame = 0;
 
     const intervalId = setInterval(() => {
       setAnimatedText(
-        originalText
-          .map((char, idx) =>
-            frame < animationFrames
-              ? chars.charAt(Math.random() * chars.length)
-              : char
-          )
-          .join("")
+          originalText
+              .map((char, idx) =>
+                  frame < animationFrames ? chars.charAt(Math.random() * chars.length) : char
+              )
+              .join("")
       );
 
       if (++frame > animationFrames) {
@@ -47,15 +44,16 @@ function BitButton({ children, onClick, disabled = false }: ButtonProps) {
     onClick?.();
     animateText();
   };
+
   return (
-    <button
-      className="bit-button"
-      onClick={handleClick}
-      onMouseEnter={animateText}
-      disabled={disabled}
-    >
-      <h1 className="bit-button-text">{animatedText}</h1>
-    </button>
+      <button
+          className={`bit-button ${className}`} // ✅ Clase personalizada combinada
+          onClick={handleClick}
+          onMouseEnter={animateText}
+          disabled={disabled}
+      >
+        <h1 className="bit-button-text">{animatedText}</h1>
+      </button>
   );
 }
 

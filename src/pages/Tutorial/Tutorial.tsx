@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import BitInput from "../../components/InputText/BitInput/BitInput";
 import BitButton from "../../components/BitButton/BitButton";
 import "./Tutorial.css";
-import EffectText from "../../components/EffectText/EffectText";
 import { useAuth } from "../../hooks/AuthProvider"; // Importa el hook useAuth
 import { useNavigate } from "react-router-dom";
 
@@ -48,7 +46,7 @@ const Tutorial: React.FC = () => {
 
   return (
     <div className="tutorial-container">
-      <EffectText fontSize="1.3rem">Try It!</EffectText>
+      <h2>Try It!</h2>
       <div className="input-container">
         <div className="color-picker">
           <h2>Choose your color:</h2>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import EffectText from "../../components/EffectText/EffectText";
 import "./Tutorial.css";
 import BitButton from "../../components/BitButton/BitButton";
 import { useAuth } from "../../hooks/AuthProvider";
@@ -41,7 +40,7 @@ const Leave: React.FC = () => {
 
   return (
     <div className="container">
-      <EffectText fontSize="1.3rem">Thanks For Playing</EffectText>
+      <h2>Thanks For Playing</h2>
       <div className="input-container"></div>
 
       <BitButton onClick={handleLeave}>Leave</BitButton>

@@ -10,9 +10,9 @@ export default function Home() {
     return (
         <div className="home-container">
             {/* Header */}
-            <header>
+
                 <h1 className="brand-title">GameDev</h1>
-            </header>
+
 
             {/* Main Section */}
             <main className="main-container">

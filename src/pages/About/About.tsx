@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./About.css";
-import EffectText from "../../components/EffectText/EffectText.tsx";
 
 function About() {
   const [activeSection, setActiveSection] = useState<"engine" | "videogames">(
@@ -14,7 +13,7 @@ function About() {
   return (
     <div className="container">
       {/* Descripción global */}
-      <EffectText>About Our Association</EffectText>
+      <h2>About Our Association</h2>
       <section className="description">
         <p>
           We are a group of passionate students from the EPSEVG, dedicated to
