@@ -7,12 +7,12 @@ import BitButton from "../../../components/BitButton/BitButton";
 import { useAuth } from "../../../hooks/AuthProvider";
 import { Navigate } from "react-router-dom";
 import { User } from "../../../interfaces/User";
+import { Github, CircleUserRound } from "lucide-react";
 
 function Login() {
   const { isAuthenticated, login } = useAuth();
 
   if (isAuthenticated) {
-    // Si ya está autenticado, redirige al main
     return <Navigate to="/main" replace />;
   }
 
@@ -23,6 +23,7 @@ function Login() {
     setErrorMessage,
     setIsLoading,
     handleChange,
+    // eslint-disable-next-line react-hooks/rules-of-hooks
   } = useFormHandler({
     email: "",
     password: "",
@@ -48,14 +49,8 @@ function Login() {
       }
 
       const data = await response.json();
-
-      // Crear usuario desde la respuesta API
       const user = User.fromApiResponse(data.user);
-
-      // Guardar en contexto y localStorage
       login(user);
-
-      // No es necesario navegar aquí, RedirectToProperPage manejará la redirección
     } catch (error: any) {
       setErrorMessage(error.message || "Failed to login. Please try again.");
     } finally {
@@ -64,28 +59,45 @@ function Login() {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-section">
-        <h2 className="login-title">LOG IN</h2>
+      <div className="login-page">
+        <div className="login-section">
+          <h2 className="login-title">LOG IN</h2>
 
-        <BitInput
-          placeholder="Enter your email"
-          value={values.email}
-          onChange={(e) => handleChange("email", e.target.value)}
-        />
-        <BitInputPassword
-          placeholder="Enter your password"
-          value={values.password}
-          onChange={(e) => handleChange("password", e.target.value)}
-        />
+          <BitInput
+              placeholder="Enter your email"
+              value={values.email}
+              onChange={(e) => handleChange("email", e.target.value)}
+          />
+          <BitInputPassword
+              placeholder="Enter your password"
+              value={values.password}
+              onChange={(e) => handleChange("password", e.target.value)}
+          />
 
-        <BitButton onClick={handleLogin} disabled={isLoading}>
-          {isLoading ? "Loading..." : "ACCEPT"}
-        </BitButton>
+          <BitButton onClick={handleLogin} disabled={isLoading}>
+            {isLoading ? "Loading..." : "ACCEPT"}
+          </BitButton>
 
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+          <div className="social-buttons">
+            <button
+                className="social-button"
+                onClick={() => (window.location.href = "https://api.gamedev.study/auth/google")}
+            >
+              <CircleUserRound className="social-icon" />
+              Continue with Google
+            </button>
+            <button
+                className="social-button"
+                onClick={() => (window.location.href = "https://api.gamedev.study/auth/github")}
+            >
+              <Github className="social-icon" />
+              Continue with GitHub
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
   );
 }
 

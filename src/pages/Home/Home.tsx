@@ -1,71 +1,39 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./Home.css";
+import React from 'react';
+import './Home.css';
+import Logo from '../../assets/logos/logo.png'; // O usa la imagen subida
+import { FaInstagram, FaGithub, FaXTwitter } from 'react-icons/fa6';
 import BitButton from "../../components/BitButton/BitButton.tsx";
-import EffectText from "../../components/EffectText/EffectText.tsx";
-import xIcon from "@icons/icons8-x.svg";
-import instaIcon from "@icons/icons8-insta.svg";
-import gitIcon from "@icons/icons8-github.svg";
+import { useNavigate } from "react-router-dom";
 
-function Home() {
-  const navigate = useNavigate();
+export default function Home() {
+    const navigate = useNavigate();
+    return (
+        <div className="home-container">
+            {/* Header */}
+            <header>
+                <h1 className="brand-title">GameDev</h1>
+            </header>
 
-  const handleNavigate = (path: string) => navigate(path);
+            {/* Main Section */}
+            <main className="main-container">
+                <div className="logo-wrapper">
+                    <img src={Logo} alt="GameDev Logo" className="animated-logo" />
+                </div>
+                <div className="button-group">
+                    <BitButton onClick={() => navigate("/login")}>Login</BitButton>
+                    <BitButton onClick={() => navigate("/signup")}>Sign Up</BitButton>
+                </div>
+            </main>
 
-  return (
-    <div className="home-container">
-      {/* Presentación principal */}
-      <div className="presentation-container">
-        <div className="presentation-title">
-          <LogoAnimated />
+            {/* Footer */}
+            <footer>
+                <div className="footer-socials">
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+                    <a href="https://x.com" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
+                </div>
+                <div>© {new Date().getFullYear()} GameDev. Todos los derechos reservados.</div>
+            </footer>
         </div>
-
-        <div className="button-container">
-          <BitButton onClick={() => handleNavigate("/login")}>LOGIN</BitButton>
-          <BitButton onClick={() => handleNavigate("/signup")}>
-            SIGN UP
-          </BitButton>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-links">
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-          <a href="/privacy">Privacy</a>
-        </div>
-
-        <div className="social-icons">
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={xIcon} alt="Twitter" />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={instaIcon} alt="LinkedIn" />
-          </a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={gitIcon} alt="GitHub" />
-          </a>
-        </div>
-      </footer>
-    </div>
-  );
+    );
 }
-
-function LogoAnimated() {
-  return <h2 className="logo-title">GAMEDEV</h2>;
-}
-
-export default Home;

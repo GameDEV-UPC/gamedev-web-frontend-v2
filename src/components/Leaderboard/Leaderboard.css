@@ -1,132 +1,71 @@
-.leaderboard-container {
-  width: 95%;
-  padding: 25px;
-  margin: 20px auto;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
-  text-align: center;
-  font-family: "Press Start 2P";
-  color: #fff;
+.leaderboard-container {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0f0f0f;
+  color: #ffffff;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
 }
 
 .leaderboard-header {
-  font-size: 2rem;
-  color: #0f0;
-  text-shadow: 0 0 8px #0f0;
-  margin-bottom: 55px;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #4285f4;
 }
 
 .leaderboard {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  margin: auto 0;
-  
-}
-.box-section {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  flex-direction: row !important;
-  align-items: center;
-  gap: 0px;
-  padding: 15px !important;
-  margin: 0;
-  box-shadow: 0 0 8px #fff;
-  border: 2px solid #fff;
-  transition: all 0.2s ease;
-  justify-content: space-around;
-}
-
-.box-section:hover {
-  box-shadow: 0 0 15px #0ff, 0 0 30px #0ff inset;
+  gap: 16px;
 }
 
 
+
+/* Rank styling */
 .rank {
-  font-size: 18px;
+  font-size: 1.5rem;
   font-weight: bold;
-  width: 10%;
-  
+  margin-right: 16px;
+  color: #f9d342;
+  min-width: 48px;
+  text-align: center;
 }
-.profile-pic {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-   box-shadow: 0 0 16px #0ff, 0 0 32px #ea36af, inset 0 0 8px #75fa69;
-    border-radius: 10px;
-}
-.rank.gold { color: #FFD700; }
-.rank.silver { color: #C0C0C0; }
-.rank.bronze { color: #CD7F32; }
 
+.rank.gold {
+  color: #ffd700;
+}
+.rank.silver {
+  color: #c0c0c0;
+}
+.rank.bronze {
+  color: #cd7f32;
+}
+
+/* Image styling */
+.profile-pic {
+  height: 48px;
+  width: 48px;
+  border-radius: 12px;
+  margin-right: 16px;
+  object-fit: cover;
+}
+
+/* Text styling */
 .stats-container {
   display: flex;
-  flex-direction: flex-start;
-  justify-content: space-between;
-  align-items: center;
-  width: 60%;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  margin-left: 20px;
-}
-.username-text{
-  font-size: 1rem;
-  color: #fff;
-  margin-left: 10px;
-}
-.stats-text{
-  font-size: 1rem;
-  color: #fff;
-  margin-left: 10px;
+  flex-direction: column;
+  flex: 1;
 }
 
-@media (max-width: 768px) {
-  .rank{
-    font-size: 0.7rem;
-    width: 20%;
-  }
-  .stats-container {
-    flex-direction: column;
-    align-items: center;
-    
-  }
-  .profile-pic {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    box-shadow: 0 0 16px #0ff, 0 0 32px #ea36af, inset 0 0 8px #75fa69;
-    border-radius: 10px;}
-  .username-text{
+.username-text {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #ffffff;
+}
 
-  font-size: 0.5rem;
-  color: #fff;
-  margin-left: 10px;
-}
-.stats-text{
-  font-size: 0.7rem;
-  color: #fff;
-  margin-left: 10px;
-}
-}
-@media (max-width: 400px) {
-  .rank{
-    font-size: 0.5rem;
-    width: 20%;
-  }
-  .stats-container {
-    flex-direction: column;
-    align-items: center;
-    
-  }
-  .username-text{
-  font-size: 0.5rem;
-  color: #fff;
-  margin-left: 10px;
-}
-.stats-text{
-  font-size: 0.5rem;
-  color: #fff;
-  margin-left: 10px;
-}
+.stats-text {
+  font-size: 1.1rem;
+  color: #4285f4;
 }

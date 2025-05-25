@@ -1,7 +1,6 @@
 import "./Leaderboard.css";
 import { UserLeaderboard } from "../../pages/Main/Main.tsx";
 
-import EffectText from "../../components/EffectText/EffectText.tsx";
 import BoxSection from "../BoxSection/BoxSection.tsx";
 
 interface LeaderboardProps {
@@ -17,9 +16,7 @@ function Leaderboard({ users }: LeaderboardProps) {
   return (
     <div className="leaderboard-container">
       <div className="leaderboard-header">
-        <EffectText fontSize="2.2rem" pixelMode borderOffset={3.0}>
-          Leaderboard
-        </EffectText>
+          <h2>Leaderboard</h2>
       </div>
       <div className="leaderboard">
         {sortedUsers.map((user, index) => (
@@ -51,7 +48,7 @@ function LeaderboardItem({ rank, username, score }: LeaderboardItemProps) {
     username
   )}?fontSize=100&fontColor=purple&unique=${Date.now() + Math.random()}`;
   return (
-    <BoxSection>
+    <BoxSection >
       <h2 className={`rank ${rankClass}`}>#{rank}</h2>
 
       <img src={catImageUrl} alt="Avatar" className="profile-pic" />

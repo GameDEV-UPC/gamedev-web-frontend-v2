@@ -1,152 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
 .bit-field {
-  width: 80%;
-  height: 60px;
-  position: relative;
-  border-radius: 2px;
-  background: #111;
-  box-shadow: 0 0 6px #ffffff, 0 0 12px #000000, inset 0 0 4px #f7f7f7;
-  color: #75fa69;
-  font-family: "Press Start 2P";
-  font-size: 14px;
-  text-transform: uppercase;
-  transition: all 0.2s, box-shadow 0.3s ease-in-out;
-  padding: 2px 24px;
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  padding: 0 16px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-sizing: border-box;
-  margin: 10px;
-}
-
-.bit-field:hover {
-  transform: translate(1px, 1px);
-  box-shadow: 0 0 12px #0ff, 0 0 24px #75fa69, inset 0 0 6px #ea36af;
-}
-
-.bit-field:active {
-  transform: translate(3px, 3px);
-  box-shadow: none;
+  transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+  border: 2px solid #2c2c2c;
+  box-shadow: 0 0 10px rgba(66, 133, 244, 0.2);
+  margin: 1rem auto;
+  font-family: 'Orbitron', sans-serif;
 }
 
 .bit-field.focused {
-  border-color: #0ff;
-  box-shadow: 0 0 16px #0ff, 0 0 32px #ea36af, inset 0 0 8px #75fa69;
-  animation: borderflicker 0.3s infinite alternate;
-  color: #0ff;
-}
-
-.bit-field.focused input {
-  color: #0ff;
+  border-color: #4285f4;
+  box-shadow: 0 0 15px rgba(66, 133, 244, 0.4), 0 0 5px rgba(66, 133, 244, 0.6);
 }
 
 .bit-field input {
   width: 100%;
   height: 100%;
-  background-color: transparent;
-  outline: none;
   border: none;
-  color: inherit;
-  font-weight: bold;
-  text-align: left;
-  transition: color 0.3s ease-in-out;
-  font-family: "Press Start 2P";
-  text-shadow: 0.06rem 0 0.06rem #ea36af, -0.125rem 0 0.06rem #75fa69;
-  letter-spacing: 0.125em;
-  animation: textflicker 0.01s infinite alternate;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
 }
 
 .bit-field input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: normal;
-  text-shadow: 0.06rem 0 0.06rem #ea36af, -0.125rem 0 0.06rem #75fa69;
+  color: #888;
+  opacity: 0.8;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
 }
 
+/* Password toggle button */
 .show-hide {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 0 0 0 8px;
   margin: 0;
-  transition: all 0.2s ease-in-out;
+  color: #4285f4;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: color 0.2s ease-in-out;
 }
 
+.show-hide:hover {
+  color: #ffffff;
+}
+
+/* Icon (if using an icon library like Lucide or FontAwesome) */
 .show-hide .icon {
+  font-size: 20px;
   transition: all 0.2s ease-in-out;
-  color: #75fa69;
-  text-shadow: 0 0 4px #75fa69, 0 0 8px #ea36af;
-  animation: iconFlicker 0.25s infinite alternate;
-  font-size: 22px;
-  background: none;
 }
 
-.show-hide:hover .icon {
-  color: #0ff;
-  text-shadow: 0 0 6px #0ff, 0 0 12px #75fa69;
-  transform: translate(1px, 1px);
-  animation: iconFlickerHover 0.3s infinite alternate;
-}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bit-field {
+    height: 45px;
+    max-width: 90%;
+  }
 
-.show-hide:active .icon {
-  transform: translate(3px, 3px);
-  color: #fff;
-  text-shadow: 0 0 4px #fff, 0 0 8px #0ff;
-}
+  .bit-field input {
+    font-size: 0.9rem;
+  }
 
-/* Animaciones comunes */
-@keyframes borderflicker {
-  0% {
-    box-shadow: 0 0 6px #ea36af, 0 0 12px #75fa69, inset 0 0 4px #ea36af;
-  }
-  50% {
-    box-shadow: 0 0 14px #0ff, 0 0 28px #ea36af, inset 0 0 8px #75fa69;
-  }
-  100% {
-    box-shadow: 0 0 6px #ea36af, 0 0 12px #75fa69, inset 0 0 4px #ea36af;
-  }
-}
-
-@keyframes textflicker {
-  from {
-    text-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
-  }
-  to {
-    text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
-  }
-}
-
-@keyframes iconFlicker {
-  0% {
-    text-shadow: 0 0 4px #0ff, 0 0 8px #ea36af;
-  }
-  50% {
-    text-shadow: 0 0 8px #ea36af, 0 0 16px #0ff;
-  }
-  100% {
-    text-shadow: 0 0 4px #0ff, 0 0 8px #ea36af;
-  }
-}
-
-@keyframes iconFlickerHover {
-  0% {
-    text-shadow: 0 0 6px #0ff, 0 0 12px #ea36af;
-  }
-  50% {
-    text-shadow: 0 0 12px #ea36af, 0 0 20px #0ff;
-  }
-  100% {
-    text-shadow: 0 0 6px #0ff, 0 0 12px #ea36af;
-  }
-}
-
-@media (max-width: 600px) {
-  .bit-field input::placeholder {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .bit-field input::placeholder {
-    font-size: 10px;
+  .show-hide .icon {
+    font-size: 18px;
   }
 }

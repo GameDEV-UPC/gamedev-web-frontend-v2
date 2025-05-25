@@ -1,159 +1,132 @@
-/* 📦 Contenedor general */
-.home-container {
-    display: flex;
-    flex-direction: column;
-    margin: auto  0 auto 0;
-    height: 95vh;
-    background: #111;
-    color: #fff;
-    font-family:'Nintendoid1', cursive;
-  }
-  .logo-title {
-    font-family: 'Nintendoid1', 'Press Start 2P', cursive;
-    color: #fff;
-    text-shadow: 4px 4px 0 #fff, 6px 6px 5px rgba(255, 255, 255, 0.3);
-    font-size: 4rem;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  /* 📖 Sección principal */
-  .presentation-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    padding: 20px;
-    text-align: center;
-    gap: 50px;
-  }
-  
-  /* Título animado */
-  .presentation-title {
-    font-size: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 4px 4px 0 #fff, 6px 6px 5px rgba(255, 255, 255, 0.3);
-  }
-  
-  /* Botones principales */
-  .button-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0px
-  }
-  .bit-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-    padding: 20px 20px;
-    border: none;
-    width: 200px;
-    height: 50px;
-    
-  }
-  .bit-button:hover {
-    background: rgba(0, 255, 0, 0);
-    color: #000;
-    box-shadow: 0 0 16px #0ff, 0 0 32px #ea36af, inset 0 0 8px #75fa69;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  
-  /* 📎 Footer */
-  .footer {
-    padding: 10px 0;
-    border-top: 4px solid #fff;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  /* Enlaces del footer */
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
-  }
-  
-  .footer-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size:1.5rem;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-links a:hover {
-    color: #0f0;
-  }
-  
-  /* Iconos de redes */
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-  }
- /* 📺 VHS neon flicker para iconos de redes */
-.social-icons img {
-    width: 30px;
-    transition: transform 0.3s ease;
-    animation: iconFlicker 0.03s infinite alternate;
-    filter: drop-shadow(0 0 1px #ea36af) drop-shadow(0 0 1px #75fa69);
-  }
-  
-  .social-icons img:hover {
-    transform: scale(0.8);
-    filter: drop-shadow(0 0 3px #ea36af) drop-shadow(0 0 3px #75fa69);
-  }
-  
-  /* 📀 Animación flicker tipo VHS */
-  @keyframes iconFlicker {
-    from {
-      filter: drop-shadow(1px 0 1px #ea36af) drop-shadow(-1px 0 1px #75fa69);
-    }
-    to {
-      filter: drop-shadow(2px 1px 2px #ea36af) drop-shadow(-2px -1px 2px #75fa69);
-    }
-  }
-  
-  
-  
-  /* 📱 Responsive */
-  @media (max-width: 768px) {
-    .presentation-title {
-      font-size: 1.5rem;
-    }
-  
-    .footer-links a{
-      gap: 12px;
-      font-size: 0.65rem;
-    }
-  
-    .social-icons {
-      gap: 12px;
-    }
-    .logo-title{
-        font-size: 3rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .presentation-title {
-      font-size: 1.2rem;
-    }
 
-    .logo-title{
-      font-size: 2.2rem;
-    }
-  
-    .footer-links a {
-      font-size: 0.65rem;
-    }
-   
-    
+.home-container {
+  height: 100vh; /* Usar height en vez de min-height */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+}
+header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60px; /* Definir altura concreta */
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+
+.brand-title {
+  font-size: 2rem;
+  color: var(--color-primary);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.main-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1s ease-in-out;
+
+}
+
+.logo-wrapper {
+  margin-bottom: 2rem;
+}
+.animated-logo {
+  width: 280px;
+  height: 280px;
+  max-width: 60vw;
+  max-height: 60vh;
+  animation: pulse 2.5s infinite ease-in-out;
+  background-color: transparent;
+}
+
+/* Logo animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
   }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.button-group button {
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-login {
+  background-color: var(--color-bg-button);
+  color: white;
+  border: none;
+}
+
+.button-login:hover {
+  background-color: var(--color-bg-button-secondary);
+}
+
+.button-signup {
+  background-color: transparent;
+  color: var(--color-bg-button);
+  border: 2px solid var(--color-primary);
+}
+
+.button-signup:hover {
+  background-color: var(--color-bg-button-secondary);
+  color: white;
+}
+
+footer {
+  height: 80px; /* Evitar que sea muy grande */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-socials a {
+  color: #60a5fa;
+  font-size: 1.5rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-socials a:hover {
+  color: #3b82f6;
+}
+
+/* Optional entrance animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

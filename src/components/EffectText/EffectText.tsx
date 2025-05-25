@@ -1,5 +1,4 @@
 import { useEffect, useState, ReactNode, JSX } from "react";
-import "./EffectText.css";
 import React from "react";
 
 function EffectText({

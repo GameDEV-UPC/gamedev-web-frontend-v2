@@ -1,19 +1,30 @@
+
 :root {
+  /* Colors principals */
+  --color-bg: #0f0f0f;
+  --color-bg-secondary: #121212;
+  --color-bg-button: #3b82f6;
+  --color-bg-button-secondary: #2563eb;
+  --color-card: #1a1a1a;
   --color-text: #ffffff;
-  --color-primary: #ffffff;
-  --color-secondary: rgb(0, 0, 0);
-  --color-terciary: rgb(57, 253, 180); ;
-  --color-border: #ffffff;
-  --color-background: linear-gradient(135deg, #0A0F0D, #1B1F21 70%);
-  --focused-color: var(--color-secondary);
-  --text-glow-color: #ffffff;
-  --svg-text-shadow: 0 0 10px var(--svg-text-glow);
-  --svg-text-glow: var(--text-glow-color);
-  --svg-font-size: 120px;
-  --main-font: 'Orbitron-Regular', sans-serif;
-  --text-font: "Press Start 2P", sans-serif;
-  --color-error: #ff0033;
-  --color-placeholder: rgba(255, 255, 255, 0.34);
+  --color-accent: #4285f4;
+  --color-gold: #f9d342;
+  --color-silver: #c0c0c0;
+  --color-bronze: #cd7f32;
+  --color-primary: #3b82f6;
+  /* Fonts */
+  --font-main: 'Orbitron', sans-serif;
+
+  /* Espaiat */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Altres */
+  --radius-card: 16px;
+  --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 @font-face  {

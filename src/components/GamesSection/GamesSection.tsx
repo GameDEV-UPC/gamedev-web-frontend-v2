@@ -1,19 +1,13 @@
 import "./GameSection.css"
-import EffectText from "../../components/EffectText/EffectText";
 import { VideoGame } from "../../interfaces/Videogame";
 
 function GamesSection({ games }: { games: VideoGame[] }) {
 
     return (
         <div className="section">
-            <EffectText
-                fontSize="1rem"
-                pixelMode
-                borderOffset={5.0}
-
-            >
+            <h3>
                 Games Played
-            </EffectText>
+            </h3>
             <div className="games-grid">
                 {games.map((game: VideoGame, index: number) => {
 
@@ -21,25 +15,14 @@ function GamesSection({ games }: { games: VideoGame[] }) {
 
                     <div key={index} className="game-card">
                         <div className="game-card-title">
-                            <EffectText
-                                fontSize="0.9rem"
-                                pixelMode
-                                borderOffset={7.0}
-
-                            >
+                            <h3>
                                 {game.gameName}
-                            </EffectText>
+                            </h3>
                         </div>
                         <div className="game-card-content">
                            
-                            <EffectText
-                                fontSize="0.5rem"
-
-                            >Max Score: {game.maxScore}</EffectText>
-                            <EffectText
-                                fontSize="0.5rem"
-
-                            >Time Played: {game.timePlayed} mins</EffectText>
+                            <h3>Max Score: {game.maxScore}</h3>
+                            <h3>Time Played: {game.timePlayed} mins</h3>
                         </div>
                     </div>
                 )}
