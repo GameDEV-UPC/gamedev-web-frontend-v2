@@ -3,6 +3,7 @@ import { User } from "../../interfaces/User";
 import { VideoGame } from "../../interfaces/Videogame";
 import BoxSection from "../../components/BoxSection/BoxSection";
 import { useAuth } from "../../hooks/AuthProvider";
+import { JSX } from "react";
 
 function MyStats() {
     const { user } = useAuth();
