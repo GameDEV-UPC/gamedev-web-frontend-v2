@@ -5,8 +5,9 @@
 
   color: #ffffff;
   padding: 40px 20px;
-  max-width: 800px;
+  max-width: 1300px;
   margin: auto;
+  width: 100%;
 }
 
 .leaderboard-header {
@@ -43,7 +44,7 @@
   color: #cd7f32;
 }
 .box-section {
-  width: 500px;
+  width: 90%;
   padding: 20rem;
 
 
