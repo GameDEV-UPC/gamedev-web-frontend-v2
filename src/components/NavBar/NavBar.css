@@ -55,4 +55,114 @@
         flex-direction: column;
         gap: 0.8rem;
     }
+}.logout-confirm-only {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     height: 100vh; /* Ocupa toda la pantalla */
+     background-color: #000; /* Fondo oscuro */
+     color: white;
+     gap: 1rem;
+     text-align: center;
+ }
+
+.logout-buttons {
+    display: flex;
+    gap: 6rem;
+}
+
+.logout-buttons .cancel-button {
+    background-color:var(--color-primary);
+    color: black;
+    width: 200px;
+
+}
+
+.logout-buttons .accept-button {
+    background-color: #444;
+    color: white;
+    width: 200px;
+
+}
+
+@media (max-width: 768px) {
+    .nav-container{
+        top:  20px;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+
+    .logo {
+
+        font-size: 1.25rem;
+        color: var(--color-primary);
+    }
+
+    .logout-button {
+        position: static;
+        width: 100%;
+        text-align: center;
+    }
+
+}
+.nav-toggle {
+    display: none;
+    position: absolute;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    z-index: 1100;
+
+}
+
+/* Mobile menu */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--color-bg);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+        display: none;
+    }
+
+    .nav-links.open {
+        top: -20px;
+        display: flex;
+        animation: fadeInDown 0.3s ease forwards;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .logout-button {
+        width: 90%;
+        text-align: center;
+    }
 }

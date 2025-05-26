@@ -1,6 +1,5 @@
-
 :root {
-  /* Colors principals */
+  /* Colores principales */
   --color-bg: #0f0f0f;
   --color-bg-secondary: #121212;
   --color-bg-button: #3b82f6;
@@ -12,18 +11,27 @@
   --color-silver: #c0c0c0;
   --color-bronze: #cd7f32;
   --color-primary: #3b82f6;
-  /* Fonts */
+  --color-secondary: #1e40af;
+
+  /* Extra (faltaban) */
+  --color-surface: #1f2937;
+  --color-muted: #d1d5db;
+
+  /* Fuentes */
   --font-main: 'Orbitron', sans-serif;
 
-  /* Espaiat */
+  /* Espaciado */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
 
-  /* Altres */
+  /* Dimensiones */
+  --radius: 12px;
   --radius-card: 16px;
+
+  /* Sombras */
   --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 

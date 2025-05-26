@@ -36,12 +36,12 @@
 }
 
 .transition-text {
-  color: #fff;
+  color: var(--color-primary);
   font-size: 3rem;
   font-weight: 900;
   letter-spacing: 0.2em;
   user-select: none;
-  font-family: "Press Start 2P", sans-serif;
+  font-family: var(--font-main);
   text-transform: uppercase;
 }
  body::before {

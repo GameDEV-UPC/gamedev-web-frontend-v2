@@ -3,56 +3,86 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import NoiseButton from "./NoiseButton.tsx";
 
-import defaultProfileIcon from "../assets/images/profile-icon-default.png";
-import EffectText from "../EffectText/EffectText.tsx";
-import { useAuth } from "../../hooks/AuthProvider.tsx"; // Importar el hook useAuth
+import { useAuth } from "../../hooks/AuthProvider.tsx";
 import BitButton from "../BitButton/BitButton.tsx";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function NavBar() {
-  const [activeLink, setActiveLink] = useState(1);
-  const location = useLocation();
-  const navigate = useNavigate();
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [confirmLogout, setConfirmLogout] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
-  // Usar el hook useAuth para acceder al contexto de autenticación
-  const { logout, user } = useAuth();
+    const { logout, user } = useAuth();
 
-  const handleLogout = () => {
-    console.log("Logging out...");
-    logout();
-    navigate("/login");
-  };
-
-  const options = [
-    { value: "1", label: "My Stats", path: "/mystats" },
-    { value: "2", label: "Home", path: "/main" },
-
-    { value: "4", label: "Marble", path: "/tutorial" },
-  ];
-
-  useEffect(() => {
-    const pathMap = {
-      "/mystats": 0,
-      "/leaderboard": 1,
-      "/about": 2,
+    const handleLogout = () => {
+        setConfirmLogout(true);
+        setMenuOpen(false); // optional: close menu
     };
 
-    setActiveLink(pathMap[location.pathname] ?? -1);
-  }, [location.pathname]);
+    const confirmLogoutNow = () => {
+        logout();
+        navigate("/login");
+    };
 
-  return (
-    <header className="nav-container">
-      <div className="logo">
-        <h1>GAMEDEV</h1>
-      </div>
+    const cancelLogout = () => {
+        setConfirmLogout(false);
+    };
 
-      <NoiseButton options={options} />
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
 
-        <BitButton className={"logout-button"} onClick={handleLogout}>
-          LOGOUT
-        </BitButton>
+    const options = [
+        { value: "1", label: "My Stats", path: "/mystats" },
+        { value: "2", label: "Home", path: "/main" },
+        { value: "4", label: "Marble", path: "/tutorial" },
+    ];
 
-    </header>
-  );
+    useEffect(() => {
+        const pathMap: Record<string, number> = {
+            "/mystats": 0,
+            "/leaderboard": 1,
+            "/about": 2,
+        };
+
+        setMenuOpen(false); // Close menu on navigation
+    }, [location.pathname]);
+
+    if (confirmLogout) {
+        return (
+            <div className="logout-confirm-only">
+                <h2>Are you sure you want to logout?</h2>
+                <div className="logout-buttons">
+                    <BitButton onClick={confirmLogoutNow} className="accept-button">
+                        Yes, Logout
+                    </BitButton>
+                    <BitButton onClick={cancelLogout} className="cancel-button">
+                        Cancel
+                    </BitButton>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <header className="nav-container">
+            <div className="logo">
+                <h1>GAMEDEV</h1>
+            </div>
+
+            <div className="nav-toggle" onClick={toggleMenu}>
+                {menuOpen ? <FaTimes /> : <FaBars />}
+            </div>
+
+            <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+                <NoiseButton options={options} />
+                <BitButton className="logout-button" onClick={handleLogout}>
+                    LOGOUT
+                </BitButton>
+            </div>
+        </header>
+    );
 }
 
 export default NavBar;

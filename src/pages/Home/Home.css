@@ -1,26 +1,18 @@
-
 .home-container {
-  height: 100vh; /* Usar height en vez de min-height */
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  padding: var(--spacing-md);
+  text-align: center;
 }
-header {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 60px; /* Definir altura concreta */
-
-
-}
-
 
 .brand-title {
-  font-size: 2rem;
+  font-size: var(--font-size-xl);
   color: var(--color-primary);
   font-weight: bold;
   letter-spacing: 1px;
@@ -33,12 +25,12 @@ header {
   align-items: center;
   justify-content: center;
   animation: fadeIn 1s ease-in-out;
-
 }
 
 .logo-wrapper {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-lg);
 }
+
 .animated-logo {
   width: 280px;
   height: 280px;
@@ -48,7 +40,7 @@ header {
   background-color: transparent;
 }
 
-/* Logo animation */
+/* Pulsing animation */
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -62,40 +54,21 @@ header {
 
 .button-group {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .button-group button {
-  padding: 0.7rem 1.4rem;
-  font-size: 1rem;
-  border-radius: 10px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-md);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.button-login {
-  background-color: var(--color-bg-button);
-  color: white;
-  border: none;
-}
-
-.button-login:hover {
-  background-color: var(--color-bg-button-secondary);
-}
-
-.button-signup {
-  background-color: transparent;
-  color: var(--color-bg-button);
-  border: 2px solid var(--color-primary);
-}
-
-.button-signup:hover {
-  background-color: var(--color-bg-button-secondary);
-  color: white;
-}
-
 footer {
-  height: 80px; /* Evitar que sea muy grande */
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,21 +78,20 @@ footer {
 .footer-socials {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 0.5rem;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xs);
 }
 
 .footer-socials a {
-  color: #60a5fa;
-  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
   transition: color 0.2s ease-in-out;
 }
 
 .footer-socials a:hover {
-  color: #3b82f6;
+  color: var(--color-accent);
 }
 
-/* Optional entrance animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -129,4 +101,29 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+@media (max-width: 600px) {
+  .animated-logo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  @media (max-width: 600px) {
+    footer {
+      height: auto;
+      padding: var(--spacing-sm);
+    }
+
+    .footer-socials {
+
+      gap: var(--spacing-xs);
+    }
+  }
+
 }

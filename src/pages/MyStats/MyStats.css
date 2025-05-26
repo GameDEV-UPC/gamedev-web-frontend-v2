@@ -1,48 +1,32 @@
-
-:root {
-    --primary-color: #4fa1ff;
-    --bg-dark: #0d0d0d;
-    --card-bg: #1c1c1c;
-    --text-light: #ffffff;
-    --neon-blue: 0 0 12px rgba(79, 161, 255, 0.6);
-    --soft-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-body {
-    font-family: 'Orbitron', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-}
-
 .mystats-container {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    padding: 3rem 1rem;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl) var(--spacing-md);
     align-items: center;
 }
 
 .section {
-    background-color: var(--card-bg);
-    border-radius: 18px;
-    box-shadow: var(--soft-shadow);
-    padding: 2rem;
+    background-color: var(--color-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: var(--spacing-lg);
     width: 100%;
     max-width: 1100px;
     transition: transform 0.3s ease;
 }
-
 .section:hover {
     transform: translateY(-4px);
-    box-shadow: var(--neon-blue);
+    box-shadow: 0 0 12px rgba(66, 133, 244, 0.6); /* usa accent como neón */
 }
 
 .profile-header {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: var(--spacing-lg);
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: var(--spacing-md);
 }
 
 .profile-picture {
@@ -50,76 +34,72 @@ body {
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--primary-color);
-    box-shadow: var(--neon-blue);
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary);
 }
 
 .username {
     font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-weight: bold;
+    color: var(--color-primary);
+    text-align: center;
 }
 
-.info-grid {
+.info-grid,
+.games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
 }
 
 .info-box {
-    background-color: #111;
-    border-radius: 12px;
-    padding: 1rem 1.5rem;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.04);
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+    padding: var(--spacing-md);
     text-align: center;
     transition: background 0.3s ease;
 }
-
 .info-box:hover {
-    background-color: #1a1a1a;
+    background-color: var(--color-bg-secondary);
 }
-
 .info-box h3 {
     font-size: 1rem;
-    color: #ccc;
-    margin-bottom: 0.5rem;
+    color: var(--color-muted);
+    margin-bottom: var(--spacing-xs);
 }
-
 .info-box p {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--color-primary);
 }
 
 .statistics-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: var(--spacing-lg);
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: var(--spacing-md);
 }
 
 .stat-card {
-    background-color: #111;
-    border-radius: 14px;
-    padding: 1.5rem;
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+    padding: var(--spacing-md);
     width: 250px;
     text-align: center;
-    box-shadow: var(--soft-shadow);
+    box-shadow: var(--shadow-card);
+    transition: 0.3s ease;
 }
-
 .stat-card:hover {
-    box-shadow: var(--neon-blue);
+    box-shadow: 0 0 10px var(--color-accent);
 }
-
 .stat-card h4 {
-    color: #aaa;
-    margin-bottom: 0.5rem;
+    color: var(--color-muted);
+    margin-bottom: var(--spacing-xs);
 }
-
 .stat-card p {
     font-size: 1.4rem;
-    color: var(--primary-color);
+    color: var(--color-primary);
     font-weight: bold;
 }
