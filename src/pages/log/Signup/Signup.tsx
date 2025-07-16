@@ -54,7 +54,7 @@ function SignUp() {
       login(data.user);
     } catch (error: any) {
       setErrorMessage(
-          error.message || "Failed to register user. Please try again."
+        error.message || "Failed to register user. Please try again."
       );
     } finally {
       setIsLoading(false);
@@ -62,55 +62,38 @@ function SignUp() {
   };
 
   return (
-      <div className="login-page">
-        <div className="login-section">
-          <h2 className="login-title">Sign Up</h2>
+    <div className="login-page">
+      <div className="login-section">
+        <h2 className="login-title">Sign Up</h2>
 
-          <BitInput
-              placeholder="Enter your full name"
-              value={values.fullName}
-              onChange={(e) => handleChange("fullName", e.target.value)}
-          />
-          <BitInput
-              placeholder="Enter your email"
-              value={values.email}
-              onChange={(e) => handleChange("email", e.target.value)}
-          />
-          <BitInput
-              placeholder="Enter your username"
-              value={values.username}
-              onChange={(e) => handleChange("username", e.target.value)}
-          />
-          <BitInputPassword
-              placeholder="Enter your password"
-              value={values.password}
-              onChange={(e) => handleChange("password", e.target.value)}
-          />
+        <BitInput
+          placeholder="Enter your full name"
+          value={values.fullName}
+          onChange={(e) => handleChange("fullName", e.target.value)}
+        />
+        <BitInput
+          placeholder="Enter your email"
+          value={values.email}
+          onChange={(e) => handleChange("email", e.target.value)}
+        />
+        <BitInput
+          placeholder="Enter your username"
+          value={values.username}
+          onChange={(e) => handleChange("username", e.target.value)}
+        />
+        <BitInputPassword
+          placeholder="Enter your password"
+          value={values.password}
+          onChange={(e) => handleChange("password", e.target.value)}
+        />
 
-          <BitButton onClick={handleRegister} disabled={isLoading}>
-            {isLoading ? "Loading..." : "SIGN UP"}
-          </BitButton>
+        <BitButton onClick={handleRegister} disabled={isLoading}>
+          {isLoading ? "Loading..." : "SIGN UP"}
+        </BitButton>
 
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-          <div className="social-buttons">
-            <button
-                className="social-button"
-                onClick={() => (window.location.href = "https://api.gamedev.study/auth/google")}
-            >
-              <CircleUserRound className="social-icon" />
-              Sign up with Google
-            </button>
-            <button
-                className="social-button"
-                onClick={() => (window.location.href = "https://api.gamedev.study/auth/github")}
-            >
-              <Github className="social-icon" />
-              Sign up with GitHub
-            </button>
-          </div>
-        </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
+    </div>
   );
 }
 

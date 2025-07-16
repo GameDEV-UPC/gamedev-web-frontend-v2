@@ -10,7 +10,7 @@ import { User } from "../interfaces/User";
 interface AuthContextType {
   isAuthenticated: boolean;
   user: User | null;
-  login: (userData: User) => void;
+  login: (token: string) => void;
   logout: () => void;
   loading: boolean;
 }
@@ -22,25 +22,48 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const parsedData = JSON.parse(storedUser);
-      const restoredUser = User.fromApiResponse(parsedData);
-      setUser(restoredUser);
+  // Función para obtener user desde /auth/me
+  const fetchUser = async (token: string) => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/auth/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Invalid token");
+      }
+
+      const data = await response.json();
+      const fetchedUser = User.fromApiResponse(data);
+      setUser(fetchedUser);
       setIsAuthenticated(true);
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      logout();
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
+  };
+
+  // Restaurar sesión al montar el provider
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      fetchUser(token);
+    } else {
+      setLoading(false);
+    }
   }, []);
 
-  const login = (userData: User) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-    setUser(userData);
-    setIsAuthenticated(true);
+  const login = (token: string) => {
+    localStorage.setItem("access_token", token);
+    fetchUser(token);
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("access_token");
     setUser(null);
     setIsAuthenticated(false);
   };

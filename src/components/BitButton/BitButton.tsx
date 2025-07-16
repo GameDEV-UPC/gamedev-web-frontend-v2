@@ -5,14 +5,22 @@ interface ButtonProps {
   children: string;
   onClick?: () => void;
   disabled?: boolean;
-  className?: string; // ✅ Añadido
+  className?: string;
+  type?: "button" | "submit" | "reset";
 }
 
-function BitButton({ children, onClick, disabled = false, className = "" }: ButtonProps) {
+function BitButton({
+  children,
+  onClick,
+  disabled = false,
+  className = "",
+  type = "button",
+}: ButtonProps) {
   const [animatedText, setAnimatedText] = useState(children);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
   const animateText = () => {
     if (isAnimating) return;
@@ -25,11 +33,13 @@ function BitButton({ children, onClick, disabled = false, className = "" }: Butt
 
     const intervalId = setInterval(() => {
       setAnimatedText(
-          originalText
-              .map((char, idx) =>
-                  frame < animationFrames ? chars.charAt(Math.random() * chars.length) : char
-              )
-              .join("")
+        originalText
+          .map((char, idx) =>
+            frame < animationFrames
+              ? chars.charAt(Math.random() * chars.length)
+              : char
+          )
+          .join("")
       );
 
       if (++frame > animationFrames) {
@@ -46,14 +56,15 @@ function BitButton({ children, onClick, disabled = false, className = "" }: Butt
   };
 
   return (
-      <button
-          className={`bit-button ${className}`} // ✅ Clase personalizada combinada
-          onClick={handleClick}
-          onMouseEnter={animateText}
-          disabled={disabled}
-      >
-        <h1 className="bit-button-text">{animatedText}</h1>
-      </button>
+    <button
+      className={`bit-button ${className}`} // ✅ Clase personalizada combinada
+      onClick={handleClick}
+      onMouseEnter={animateText}
+      disabled={disabled}
+      type={type}
+    >
+      <h1 className="bit-button-text">{animatedText}</h1>
+    </button>
   );
 }
 

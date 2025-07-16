@@ -19,6 +19,7 @@ import Tutorial from "./pages/Tutorial/Tutorial.tsx";
 import Leave from "./pages/Tutorial/Leave.tsx";
 import RedirectToProperPage from "./hooks/Redirect.tsx";
 import { PageTransitionProvider } from "./hooks/transition.tsx";
+import GoogleCallback from "./hooks/GoogleCallback.tsx";
 
 function App() {
   return (
@@ -50,53 +51,57 @@ function MainContent() {
       {showNavbarPaths.includes(location.pathname) && <Navbar />}
 
       <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-              {/* Ruta raíz redirige según estado auth */}
-              <Route path="/" element={<RedirectToProperPage />} />
+        <Routes location={location} key={location.pathname}>
+          {/* Ruta raíz redirige según estado auth */}
+          <Route path="/" element={<RedirectToProperPage />} />
 
-              {/* Rutas públicas */}
-              <Route path="/home" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/tutorial" element={<Tutorial />} />
+          {/* Rutas públicas */}
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/tutorial" element={<Tutorial />} />
 
-              {/* Rutas protegidas */}
-              <Route
-                  path="/main"
-                  element={
-                      <ProtectedRoute>
-                          <Main />
-                      </ProtectedRoute>
-                  }
-              />
-              <Route
-                  path="/mystats"
-                  element={
-                      <ProtectedRoute>
-                          <MyStats />
-                      </ProtectedRoute>
-                  }
-              />
-              <Route
-                  path="/about"
-                  element={
-                      <ProtectedRoute>
-                          <About />
-                      </ProtectedRoute>
-                  }
-              />
-              <Route
-                  path="/leave"
-                  element={
-                      <ProtectedRoute>
-                          <Leave />
-                      </ProtectedRoute>
-                  }
-              />
+          {/* Rutas protegidas */}
+          <Route
+            path="/main"
+            element={
+              <ProtectedRoute>
+                <Main />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/mystats"
+            element={
+              <ProtectedRoute>
+                <MyStats />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <ProtectedRoute>
+                <About />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/leave"
+            element={
+              <ProtectedRoute>
+                <Leave />
+              </ProtectedRoute>
+            }
+          />
 
-              {/* Ruta 404 opcional */}
-              <Route path="*" element={<h1 style={{ textAlign: "center" }}>404 - Not Found</h1>} />
-          </Routes>
+          {/* Ruta 404 opcional */}
+          <Route
+            path="*"
+            element={<h1 style={{ textAlign: "center" }}>404 - Not Found</h1>}
+          />
+          <Route path="/auth/google/callback" element={<GoogleCallback />} />
+        </Routes>
       </AnimatePresence>
     </>
   );
