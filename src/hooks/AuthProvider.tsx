@@ -25,7 +25,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Función para obtener user desde /auth/me
   const fetchUser = async (token: string) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/auth/me", {
+      const response = await fetch("https://api.gamedev.study/auth/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

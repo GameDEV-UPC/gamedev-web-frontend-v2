@@ -27,7 +27,8 @@ export default function Home() {
           <button
             className="social-button"
             onClick={() =>
-              (window.location.href = "http://127.0.0.1:8000/auth/google/login")
+              (window.location.href =
+                "https://api.gamedev.study/auth/google/login")
             }
           >
             <CircleUserRound className="social-icon" />
@@ -36,7 +37,8 @@ export default function Home() {
           <button
             className="social-button"
             onClick={() =>
-              (window.location.href = "https://api.gamedev.study/auth/github")
+              (window.location.href =
+                "https://api.gamedev.study/auth/github/login")
             }
           >
             <Github className="social-icon" />

@@ -20,6 +20,7 @@ import Leave from "./pages/Tutorial/Leave.tsx";
 import RedirectToProperPage from "./hooks/Redirect.tsx";
 import { PageTransitionProvider } from "./hooks/transition.tsx";
 import GoogleCallback from "./hooks/GoogleCallback.tsx";
+import GithubCallback from "./hooks/GithubCallback.tsx";
 
 function App() {
   return (
@@ -101,6 +102,7 @@ function MainContent() {
             element={<h1 style={{ textAlign: "center" }}>404 - Not Found</h1>}
           />
           <Route path="/auth/google/callback" element={<GoogleCallback />} />
+          <Route path="/auth/github/callback" element={<GithubCallback />} />
         </Routes>
       </AnimatePresence>
     </>
