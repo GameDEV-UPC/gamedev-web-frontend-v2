@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import Logo from "../../assets/logos/logo.png"; // O usa la imagen subida
+import Logo from "../../assets/logos/logo.png";
 import { FaInstagram, FaGithub, FaXTwitter } from "react-icons/fa6";
 import BitButton from "../../components/BitButton/BitButton.tsx";
 import { useNavigate } from "react-router-dom";
@@ -8,42 +8,49 @@ import { CircleUserRound, Github } from "lucide-react";
 
 export default function Home() {
   const navigate = useNavigate();
+
   return (
     <div className="home-container">
       {/* Header */}
-
-      <h1 className="brand-title">GameDev</h1>
+      <header className="header">
+        <h1 className="glitch-title">GAMEDEV</h1>
+        <p className="subtext">¡Bienvenido a GameDev!</p>
+      </header>
 
       {/* Main Section */}
       <main className="main-container">
         <div className="logo-wrapper">
           <img src={Logo} alt="GameDev Logo" className="animated-logo" />
         </div>
+
         <div className="button-group">
-          <BitButton onClick={() => navigate("/login")}>Login</BitButton>
-          <BitButton onClick={() => navigate("/signup")}>Sign Up</BitButton>
-        </div>
-        <div className="social-buttons">
-          <button
-            className="social-button"
+          <BitButton className="primary-btn" onClick={() => navigate("/login")}>
+            Login
+          </BitButton>
+          <BitButton
+            className="primary-btn"
+            onClick={() => navigate("/signup")}
+          >
+            Sign Up
+          </BitButton>
+          <BitButton
+            icon={<CircleUserRound className="social-icon" />}
             onClick={() =>
               (window.location.href =
                 "https://api.gamedev.study/auth/google/login")
             }
           >
-            <CircleUserRound className="social-icon" />
-            Continue with Google
-          </button>
-          <button
-            className="social-button"
+            Google
+          </BitButton>
+          <BitButton
+            icon={<Github className="social-icon" />}
             onClick={() =>
               (window.location.href =
                 "https://api.gamedev.study/auth/github/login")
             }
           >
-            <Github className="social-icon" />
-            Continue with GitHub
-          </button>
+            GitHub
+          </BitButton>
         </div>
       </main>
 

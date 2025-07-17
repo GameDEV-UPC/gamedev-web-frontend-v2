@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./BitButton.css";
 
 interface ButtonProps {
@@ -7,6 +7,8 @@ interface ButtonProps {
   disabled?: boolean;
   className?: string;
   type?: "button" | "submit" | "reset";
+  width?: string | number;
+  icon?: React.ReactNode;
 }
 
 function BitButton({
@@ -15,6 +17,8 @@ function BitButton({
   disabled = false,
   className = "",
   type = "button",
+  width = "280px",
+  icon,
 }: ButtonProps) {
   const [animatedText, setAnimatedText] = useState(children);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -26,7 +30,7 @@ function BitButton({
     if (isAnimating) return;
 
     setIsAnimating(true);
-    const originalText = children.split("");
+    const originalText = String(children).split("");
     const animationFrames = 15;
     const interval = 30;
     let frame = 0;
@@ -36,7 +40,7 @@ function BitButton({
         originalText
           .map((char, idx) =>
             frame < animationFrames
-              ? chars.charAt(Math.random() * chars.length)
+              ? chars.charAt(Math.floor(Math.random() * chars.length))
               : char
           )
           .join("")
@@ -45,7 +49,7 @@ function BitButton({
       if (++frame > animationFrames) {
         clearInterval(intervalId);
         setIsAnimating(false);
-        setAnimatedText(children);
+        setAnimatedText(String(children));
       }
     }, interval);
   };
@@ -57,12 +61,14 @@ function BitButton({
 
   return (
     <button
-      className={`bit-button ${className}`} // ✅ Clase personalizada combinada
+      className={`bit-button ${className}`}
       onClick={handleClick}
       onMouseEnter={animateText}
       disabled={disabled}
       type={type}
+      style={{ width }}
     >
+      {icon && <span className="bit-button-icon">{icon}</span>}
       <h1 className="bit-button-text">{animatedText}</h1>
     </button>
   );

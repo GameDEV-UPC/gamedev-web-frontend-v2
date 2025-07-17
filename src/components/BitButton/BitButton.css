@@ -1,23 +1,29 @@
 .bit-button {
-  background-color: transparent;
-  border: 2px solid #4285f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #2c2c2c;
+  border: 2px solid #333;
   border-radius: 12px;
-  padding: 12px 24px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  font-family: 'Orbitron', sans-serif;
-  position: relative;
-  overflow: hidden;
   color: #ffffff;
-  min-width: 160px;
+  font-size: 1rem;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+  width: 280px; /* valor por defecto si no se pasa como prop */
+  overflow: hidden;
 }
 
 .bit-button:hover {
-  background-color: #4285f4;
-  color: #0f0f0f;
-  box-shadow: 0 0 12px #4285f4;
-  transform: scale(1.03);
+  background-color: var(--color-primary);
+  color: #fff;
+  
+  transform: scale(1.1);
 }
+
 
 .bit-button:disabled {
   opacity: 0.5;
@@ -25,11 +31,20 @@
   box-shadow: none;
 }
 
+.bit-button-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
 .bit-button-text {
   font-size: 1.2rem;
   font-weight: bold;
   letter-spacing: 2px;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   user-select: none;
   transition: color 0.3s ease;
 }

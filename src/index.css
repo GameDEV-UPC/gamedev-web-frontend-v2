@@ -64,7 +64,13 @@
 }
 @font-face{
   font-family: "Press Start 2P", serif;
+  src: url('../../gamedev-web-frontend_/src/assets/fonts/PressStart2P-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
+.jockey-one-regular {
+  font-family: "Jockey One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
