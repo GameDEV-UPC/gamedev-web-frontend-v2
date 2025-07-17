@@ -17,10 +17,9 @@ export default function Home() {
         <p className="subtext">¡Bienvenido a GameDev!</p>
       </header>
 
-      {/* Main Section */}
-      <main className="main-container">
-        <div className="logo-wrapper">
-          <img src={Logo} alt="GameDev Logo" className="animated-logo" />
+      <div className="main-container">
+        <div className="logo-bg-wrapper">
+          <img src={Logo} alt="Background Logo" className="background-logo" />
         </div>
 
         <div className="button-group">
@@ -52,7 +51,7 @@ export default function Home() {
             GitHub
           </BitButton>
         </div>
-      </main>
+      </div>
 
       {/* Footer */}
       <footer>

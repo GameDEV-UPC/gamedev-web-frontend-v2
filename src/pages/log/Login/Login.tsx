@@ -79,6 +79,7 @@ function Login() {
     <div className="login-page">
       <div className="login-section">
         <h2 className="login-title">LOG IN</h2>
+
         <form
           onSubmit={(e) => {
             e.preventDefault();
